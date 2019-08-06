@@ -23,7 +23,7 @@ class MainApp extends React.Component {
     this.getPosts()
   }
 
-  getPosts() {
+  getPosts = () => {
     fetch("/posts")
       .then(response => {
         return response.json()
@@ -31,6 +31,11 @@ class MainApp extends React.Component {
       .then(posts => {
         this.setState({ posts })
       })
+  }
+
+  createPost = (attrs) => {
+    console.log("Working. These are the attrs", attrs);
+
   }
 
   render() {
@@ -61,7 +66,17 @@ class MainApp extends React.Component {
           />
           {logged_in &&
             <Switch>
-              <Route component={NewPost} path="/new" />
+              <Route
+                path="/new"
+                render={ (props) => {
+                  return(
+                    <NewPost
+                    {...props}
+                    onSubmit={this.createPost}
+                    />
+                  )
+                }}
+              />
             </Switch>
           }
         </Router>
