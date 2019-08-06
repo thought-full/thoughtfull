@@ -6,6 +6,10 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import {
+  Navbar,
+  Nav
+} from 'react-bootstrap'
 
 import Posts from './pages/Posts'
 import NewPost from './pages/NewPost'
@@ -39,18 +43,12 @@ class MainApp extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="TopNav">
-          {logged_in &&
-            <div>
-              <a href={sign_out_route}>Sign Out</a>
-            </div>
-          }
-          {!logged_in &&
-            <div>
-              <a href={sign_in_route}>Sign In</a>
-            </div>
-          }
-        </div>
+
+        <Navbar bg="light">
+          <Nav.Link href="/">Posts</Nav.Link>
+          <Nav.Link href="/new">New Post</Nav.Link>
+        </Navbar>
+
         <Router>
           <Route
             exact
@@ -67,6 +65,18 @@ class MainApp extends React.Component {
             </Switch>
           }
         </Router>
+        <div className="TopNav">
+          {logged_in &&
+            <div>
+              <a href={sign_out_route}>Sign Out</a>
+            </div>
+          }
+          {!logged_in &&
+            <div>
+              <a href={sign_in_route}>Sign In</a>
+            </div>
+          }
+        </div>
       </React.Fragment>
     );
   }
