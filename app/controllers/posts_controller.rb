@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
+    before_action :authenticate_user!, only: [:create]
+
     def index
         @posts = Post.all
         render json: @posts
     end
     def create
-        @post = Post.create(post_params)
-        render json: @post
+        @post = current_user.posts.create(post_params)
+        render json: @post, status: 201
     end
 
     private

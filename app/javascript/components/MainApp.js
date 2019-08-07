@@ -35,7 +35,18 @@ class MainApp extends React.Component {
 
   createPost = (attrs) => {
     console.log("Working. These are the attrs", attrs);
-
+    fetch("/posts", {
+      method: 'POST',
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({post: attrs})
+    })
+    .then(response => {
+      if(response.status === 201){
+        this.getPosts()
+      }
+    })
   }
 
   render() {
@@ -72,7 +83,7 @@ class MainApp extends React.Component {
                   return(
                     <NewPost
                     {...props}
-                    onSubmit={this.createPost}
+                    createPost={this.createPost}
                     />
                   )
                 }}
