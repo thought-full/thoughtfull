@@ -15,9 +15,9 @@ class NewPost extends React.Component {
   }
 
   localSubmit = () => {
-    const { onSubmit } = this.props
+    const { createPost } = this.props
     const { form } = this.state
-    onSubmit(form)
+    createPost(form)
   }
 
   onChange = (e) => {
