@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, only: [:create]
+    before_action :authenticate_user!, only: [:create, :destroy]
 
     def index
         @posts = Post.all
@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.create(post_params)
         render json: @post, status: 201
+    end
+    def destroy
+        @post = current_user.posts.find(params[:id])
+        @post.destroy
+        render json: @post
     end
 
     private

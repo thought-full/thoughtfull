@@ -49,11 +49,23 @@ class MainApp extends React.Component {
     })
   }
 
+  deletePost = (id) => {
+    return fetch(`/posts/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if(response.status === 200){
+        this.getPosts()
+      }
+    })
+  }
+
   render() {
     const {
       logged_in,
       sign_in_route,
-      sign_out_route
+      sign_out_route,
+      current_user_id
     } = this.props
     const { posts } = this.state
 
@@ -71,7 +83,12 @@ class MainApp extends React.Component {
             path="/"
             render={(props) => {
               return (
-                <Posts {...props} posts = {posts}/>
+                <Posts 
+                  {...props} 
+                  currentUserId = {current_user_id}
+                  posts = {posts}
+                  deletePost = {this.deletePost}
+                />
               )
             }}
           />
