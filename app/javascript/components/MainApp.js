@@ -35,7 +35,7 @@ class MainApp extends React.Component {
 
   createPost = (attrs) => {
     console.log("Working. These are the attrs", attrs);
-    fetch("/posts", {
+    return fetch("/posts", {
       method: 'POST',
       headers:{
         "Content-Type": "application/json"
