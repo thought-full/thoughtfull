@@ -51,6 +51,10 @@ class MainApp extends React.Component {
     })
   }
 
+  editPost = (id, attrs) => {
+    console.log("editing", id, attrs);
+  }
+
   deletePost = (id) => {
     return fetch(`/posts/${id}`, {
       method: 'DELETE'
@@ -115,6 +119,17 @@ class MainApp extends React.Component {
                     <NewPost
                     {...props}
                     createPost={this.createPost}
+                    />
+                  )
+                }}
+              />
+              <Route
+                path="/edit/:id"
+                render={(props) => {
+                  return(
+                    <editPost
+                    {...props}
+                    editPost={this.editPost}
                     />
                   )
                 }}
