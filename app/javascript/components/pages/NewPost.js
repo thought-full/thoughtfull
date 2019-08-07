@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Form, Button } from 'react-bootstrap'
+import {Redirect} from 'react-router-dom'
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class NewPost extends React.Component {
         date: "",
         body: "",
         public_view: false
-      }
+      },
+      createSuccess: false
     }
   }
 
@@ -18,6 +20,9 @@ class NewPost extends React.Component {
     const { createPost } = this.props
     const { form } = this.state
     createPost(form)
+    .then(() => {
+      this.setState({createSuccess: true})
+    })
   }
 
   onChange = (e) => {
@@ -36,8 +41,10 @@ class NewPost extends React.Component {
 
   render () {
     const { date, body, public_view } = this.state.form
+    const { createSuccess } = this.state
     return (
       <React.Fragment>
+        {createSuccess && <Redirect to="/" /> }
         <h1>Create a New Post</h1>
 
         <Form>
