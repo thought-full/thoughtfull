@@ -19,7 +19,8 @@ class MainApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      posts: []
+      posts: [],
+      error: null,
     }
     this.getPosts()
   }
@@ -57,7 +58,12 @@ class MainApp extends React.Component {
     .then(response => {
       if(response.status === 200){
         this.getPosts()
+      }else{
+        return response.json()
       }
+    })
+    .then(payload => {
+      this.setState({error: payload.error})
     })
   }
 
@@ -69,7 +75,7 @@ class MainApp extends React.Component {
       current_user_id
     } = this.props
 
-    const { posts } = this.state
+    const { posts, error } = this.state
 
     return (
       <React.Fragment>
@@ -80,6 +86,10 @@ class MainApp extends React.Component {
           sign_in_route={this.props.sign_in_route}
           sign_out_route={this.props.sign_out_route}
           />
+
+        {error &&
+          <h2>{error}</h2>
+        }
 
         <Router>
           <Route
