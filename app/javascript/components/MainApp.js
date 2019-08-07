@@ -11,6 +11,7 @@ import {
   Nav
 } from 'react-bootstrap'
 
+import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
 import NewPost from './pages/NewPost'
 
@@ -67,15 +68,18 @@ class MainApp extends React.Component {
       sign_out_route,
       current_user_id
     } = this.props
+
     const { posts } = this.state
 
     return (
       <React.Fragment>
 
-        <Navbar bg="light">
-          <Nav.Link href="/">Posts</Nav.Link>
-          <Nav.Link href="/new">New Post</Nav.Link>
-        </Navbar>
+        <Navigation
+          posts={posts}
+          logged_in={this.props.logged_in}
+          sign_in_route={this.props.sign_in_route}
+          sign_out_route={this.props.sign_out_route}
+          />
 
         <Router>
           <Route
@@ -83,8 +87,8 @@ class MainApp extends React.Component {
             path="/"
             render={(props) => {
               return (
-                <Posts 
-                  {...props} 
+                <Posts
+                  {...props}
                   currentUserId = {current_user_id}
                   posts = {posts}
                   deletePost = {this.deletePost}
@@ -108,18 +112,6 @@ class MainApp extends React.Component {
             </Switch>
           }
         </Router>
-        <div className="TopNav">
-          {logged_in &&
-            <div>
-              <a href={sign_out_route}>Sign Out</a>
-            </div>
-          }
-          {!logged_in &&
-            <div>
-              <a href={sign_in_route}>Sign In</a>
-            </div>
-          }
-        </div>
       </React.Fragment>
     );
   }
