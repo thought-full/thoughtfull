@@ -1,18 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch
-} from 'react-router-dom'
-import {
   Navbar,
   Nav
 } from 'react-bootstrap'
 
-import Posts from './../pages/Posts'
-import NewPost from './../pages/NewPost'
 
 class Navigation extends React.Component {
 

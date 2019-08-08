@@ -6,10 +6,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import {
-  Navbar,
-  Nav
-} from 'react-bootstrap'
 
 import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
@@ -127,7 +123,7 @@ class MainApp extends React.Component {
                 path="/edit/:id"
                 render={(props) => {
                   return(
-                    <editPost
+                    <EditPost
                     {...props}
                     editPost={this.editPost}
                     />
