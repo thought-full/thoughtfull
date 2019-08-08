@@ -10,6 +10,7 @@ import {
 import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
 import NewPost from './pages/NewPost'
+import EditPost from './pages/EditPost'
 
 class MainApp extends React.Component {
   constructor(props) {
@@ -47,8 +48,32 @@ class MainApp extends React.Component {
     })
   }
 
+  showPost = (id) => {
+    return fetch(`/posts/${id}`)
+    .then(response => {
+      return response.json()
+    })
+  }
+
   editPost = (id, attrs) => {
     console.log("editing", id, attrs);
+    return fetch(`/posts/${id}`, {
+      method: 'PATCH',
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({post: attrs})
+    })
+    .then(response => {
+      if(response.status === 202){
+        this.getPosts()
+      }else{
+        return response.json()
+      }
+    })
+    .then(payload => {
+      this.setState({error: payload.error})
+    })
   }
 
   deletePost = (id) => {
@@ -126,6 +151,7 @@ class MainApp extends React.Component {
                     <EditPost
                     {...props}
                     editPost={this.editPost}
+                    showPost={this.showPost}
                     />
                   )
                 }}

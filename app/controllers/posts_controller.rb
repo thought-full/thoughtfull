@@ -1,9 +1,18 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :destroy]
+    before_action :authenticate_user!, only: [:create, :destroy, :update]
 
     def index
         @posts = Post.all
         render json: @posts
+    end
+
+    def update
+        @post = current_user.posts.find(params[:id])
+        if @post.update(post_params)
+            render json: @post
+        else
+            render json: {error: 'could not update'}, status: 401
+        end
     end
 
     def show
