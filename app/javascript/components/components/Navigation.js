@@ -26,6 +26,10 @@ class Navigation extends React.Component {
           }
 
           {logged_in &&
+            <Nav.Link href="/private">Private Posts</Nav.Link>
+          }
+
+          {logged_in &&
             <Nav.Link href={sign_out_route}>Sign Out</Nav.Link>
           }
           {!logged_in &&
