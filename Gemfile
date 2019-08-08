@@ -61,3 +61,5 @@ gem "webpacker", "~> 4.0"
 gem "react-rails", "~> 2.6"
 
 gem "bootstrap", "~> 4.3"
+
+gem "rspec-rails", "~> 3.8"
