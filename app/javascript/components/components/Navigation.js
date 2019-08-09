@@ -2,7 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import {
   Navbar,
-  Nav
+  Nav,
+  Container
 } from 'react-bootstrap'
 
 
@@ -18,8 +19,8 @@ class Navigation extends React.Component {
 
     return (
       <React.Fragment>
-        <Navbar bg="light">
-          <Nav.Link href="/">Posts</Nav.Link>
+          <Navbar bg="light">
+            <Nav.Link href="/">Posts</Nav.Link>
 
           {logged_in &&
             <Nav.Link href="/new">New Post</Nav.Link>
