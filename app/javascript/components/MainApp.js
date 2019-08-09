@@ -7,6 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 
+import Jumbotron from './components/Jumbotron'
 import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
 import NewPost from './pages/NewPost'
@@ -105,7 +106,7 @@ class MainApp extends React.Component {
 
     return (
       <React.Fragment>
-
+        <Jumbotron />
         <Navigation
           posts={posts}
           logged_in={this.props.logged_in}
@@ -137,7 +138,7 @@ class MainApp extends React.Component {
             path="/private"
             render={(props) => {
               return(
-                <Private 
+                <Private
                   {...props}
                   currentUserId = {current_user_id}
                   posts = {posts}
