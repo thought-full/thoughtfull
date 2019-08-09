@@ -11,6 +11,7 @@ import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
 import NewPost from './pages/NewPost'
 import EditPost from './pages/EditPost'
+import Private from './pages/Private'
 
 class MainApp extends React.Component {
   constructor(props) {
@@ -131,6 +132,21 @@ class MainApp extends React.Component {
               )
             }}
           />
+
+          <Route
+            path="/private"
+            render={(props) => {
+              return(
+                <Private 
+                  {...props}
+                  currentUserId = {current_user_id}
+                  posts = {posts}
+                  deletePost = {this.deletePost}
+                />
+              )
+            }}
+          />
+
           {logged_in &&
             <Switch>
               <Route
@@ -144,6 +160,7 @@ class MainApp extends React.Component {
                   )
                 }}
               />
+
               <Route
                 path="/edit/:id"
                 render={(props) => {

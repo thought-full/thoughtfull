@@ -60,7 +60,7 @@ class NewPost extends React.Component {
 
           <div className="custom-control custom-switch">
             <input onChange={this.togglesPublicView} name="public_view" type="checkbox" className="custom-control-input" id="customSwitch1" checked={public_view}></input>
-            <label className="custom-control-label" htmlFor="customSwitch1">Make thought private?</label>
+            <label className="custom-control-label" htmlFor="customSwitch1">Make thought public?</label>
           </div>
 
 
