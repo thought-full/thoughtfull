@@ -50,12 +50,12 @@ class NewPost extends React.Component {
         <Form>
           <Form.Group>
             <Form.Label>Date</Form.Label>
-            <Form.Control onChange={this.onChange} name="date" value={date} type="text" placeholder="Enter date" />
+            <Form.Control onChange={this.onChange} id = "date" name="date" value={date} type="text" placeholder="Enter date" />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Body</Form.Label>
-            <Form.Control onChange={this.onChange} name="body" value={body} type="text" placeholder="Enter thought" />
+            <Form.Control onChange={this.onChange} id = "body" name="body" value={body} type="text" placeholder="Enter thought" />
           </Form.Group>
 
           <div className="custom-control custom-switch">
