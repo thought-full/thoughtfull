@@ -1,3 +1,18 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.card-flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+
+.card-width {
+  min-width: 200px;
+  max-width: 25%;
+  margin: 0 20px;
+}
