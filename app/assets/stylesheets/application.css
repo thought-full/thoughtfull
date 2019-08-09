@@ -16,3 +16,8 @@
  * {
    box-sizing: border-box;
  }
+
+ .leaflet-container {
+     height: 30vh;
+     width: 100%;
+ }
