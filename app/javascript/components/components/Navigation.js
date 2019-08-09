@@ -19,7 +19,7 @@ class Navigation extends React.Component {
 
     return (
       <React.Fragment>
-          <Navbar bg="light">
+          <Navbar bg="light" sticky="top">
             <Nav.Link href="/">Posts</Nav.Link>
 
           {logged_in &&
