@@ -3,14 +3,16 @@ import PropTypes from "prop-types"
 import { Link } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
+import Map from './../components/Map'
+
 class Posts extends React.Component {
   render() {
     const { posts, currentUserId, deletePost } = this.props
     return (
       <React.Fragment>
         <Container>
-        <h1>Posts</h1>
-        <div className="card-flex">
+          <h1>Posts</h1>
+          <div className="card-flex">
             {posts.map((post) => {
               return (
                 <div
@@ -33,7 +35,10 @@ class Posts extends React.Component {
               )
             })}
           </div>
-          </Container>
+        </Container>
+        <Container>
+          <Map />
+        </Container>
       </React.Fragment>
     )
   }
