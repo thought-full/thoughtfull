@@ -7,24 +7,27 @@ class Private extends React.Component {
     const { posts, currentUserId, deletePost } = this.props
     return (
       <React.Fragment>
-        <h1>Private Posts</h1>
-        <ul>
-          {posts.map((post) => {
-            return (
-              <li
-                key={post.id}>
-                  {post.body}
-                  {post.user_id === currentUserId &&
-                    <div>
-                      <button onClick={() => deletePost(post.id)}>Delete Post</button>
-                      <Link to={`/edit/${post.id}`}>Edit</Link>
-                    </div>
-                  }
-              </li>
-            )
-          })}
-        </ul>
-      </React.Fragment>
+      <h1>Posts</h1>
+      <ul>
+        {posts.reduce((filtered, post) => {
+            if(post.public_view == false){
+                filtered.push(
+                    <li
+                    key={post.id}>
+                        {post.body}
+                        {post.user_id === currentUserId &&
+                        <div>
+                            <button onClick={() => deletePost(post.id)}>Delete Post</button>
+                            <Link to={`/edit/${post.id}`}>Edit</Link>
+                        </div>
+                        }
+                    </li>
+                )
+            }
+            return filtered
+        }, [])}
+      </ul>
+    </React.Fragment>
     )
   }
 }
