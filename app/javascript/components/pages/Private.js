@@ -10,17 +10,15 @@ class Private extends React.Component {
       <h1>Posts</h1>
       <ul>
         {posts.reduce((filtered, post) => {
-            if(post.public_view == false){
+            if(post.public_view == false && post.user_id === currentUserId){
                 filtered.push(
                     <li
                     key={post.id}>
                         {post.body}
-                        {post.user_id === currentUserId &&
                         <div>
                             <button onClick={() => deletePost(post.id)}>Delete Post</button>
                             <Link to={`/edit/${post.id}`}>Edit</Link>
                         </div>
-                        }
                     </li>
                 )
             }
