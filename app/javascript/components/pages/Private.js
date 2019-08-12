@@ -12,26 +12,22 @@ class Posts extends React.Component {
       <h1>Posts</h1>
       <div className="card-flex">
       {posts.reduce((filtered, post) => {
-        if(post.public_view == true){
+        if(post.public_view == false && post.user_id === currentUserId){
           filtered.push(
-            <div
+            <div 
               className="card border-primary mb-3 card-width"
               key={post.id}
             >
-              <div className="card-header">{post.created_at}</div>
+              <div className="card-header">Header</div>
               <div className="card-body">
-              <h4 className="card-title">Title</h4>
-              <div className="card-text">
+              <h4 className="card-title">Primary card title</h4>
+              <p className="card-text">
                 {post.body}
-                <hr />
-                {post.address}
-                {post.user_id === currentUserId &&
                   <div>
                     <button onClick={() => deletePost(post.id)}>Delete Post</button>
                     <Link to={`/edit/${post.id}`}>Edit</Link>
                   </div>
-                }
-              </div>
+              </p>
               </div>
             </div>
           )

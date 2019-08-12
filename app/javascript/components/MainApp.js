@@ -7,10 +7,13 @@ import {
   Switch
 } from 'react-router-dom'
 
+import Jumbotron from './components/Jumbotron'
 import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
+import Location from './pages/Location'
 import NewPost from './pages/NewPost'
 import EditPost from './pages/EditPost'
+import Private from './pages/Private'
 
 class MainApp extends React.Component {
   constructor(props) {
@@ -104,7 +107,7 @@ class MainApp extends React.Component {
 
     return (
       <React.Fragment>
-
+        <Jumbotron />
         <Navigation
           posts={posts}
           logged_in={this.props.logged_in}
@@ -117,6 +120,7 @@ class MainApp extends React.Component {
         }
 
         <Router>
+
           <Route
             exact
             path="/"
@@ -131,6 +135,35 @@ class MainApp extends React.Component {
               )
             }}
           />
+
+          <Route
+            path="/location"
+            render={(props) => {
+              return (
+                <Location
+                  {...props}
+                  currentUserId = {current_user_id}
+                  posts = {posts}
+                  deletePost = {this.deletePost}
+                />
+              )
+            }}
+          />
+
+          <Route
+            path="/private"
+            render={(props) => {
+              return(
+                <Private
+                  {...props}
+                  currentUserId = {current_user_id}
+                  posts = {posts}
+                  deletePost = {this.deletePost}
+                />
+              )
+            }}
+          />
+
           {logged_in &&
             <Switch>
               <Route
@@ -144,6 +177,7 @@ class MainApp extends React.Component {
                   )
                 }}
               />
+
               <Route
                 path="/edit/:id"
                 render={(props) => {
@@ -159,6 +193,7 @@ class MainApp extends React.Component {
             </Switch>
           }
         </Router>
+
       </React.Fragment>
     );
   }
