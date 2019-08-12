@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+import React from "react"
+import PropTypes from "prop-types"
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+import Navigation from './components/Navigation'
+import Posts from './pages/Posts'
+import NewPost from './pages/NewPost'
+import EditPost from './pages/EditPost'
+import Private from './pages/Private'
+import Jumbotron from './components/Jumbotron'
+=======
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
@@ -11,6 +28,7 @@ import EditPost from "./pages/EditPost";
 import Private from "./pages/Private";
 import About from "./pages/About";
 import SignIn from "./components/SignIn";
+>>>>>>> master
 
 class MainApp extends React.Component {
   constructor(props) {
@@ -158,8 +176,8 @@ class MainApp extends React.Component {
 
           <Route
             path="/private"
-            render={props => {
-              return (
+            render={(props) => {
+              return(
                 <Private
                   {...props}
                   currentUserId={current_user_id}
