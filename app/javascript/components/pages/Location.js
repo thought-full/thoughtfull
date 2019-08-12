@@ -9,9 +9,7 @@ class Location extends React.Component {
     const { posts, currentUserId, deletePost } = this.props
     return (
       <React.Fragment>
-        <Container>
-          <Map {...this.props} />
-        </Container>
+        <Map {...this.props} />
       </React.Fragment>
     )
   }
