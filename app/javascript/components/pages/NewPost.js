@@ -5,9 +5,6 @@ import {Redirect} from 'react-router-dom'
 // Import geosearch
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
-
-
-
 class NewPost extends React.Component {
   constructor(props) {
     super(props)
@@ -41,12 +38,14 @@ class NewPost extends React.Component {
     // Leaflet geosearch variables, setup, search
     const provider = new OpenStreetMapProvider();
     // Leaflet geosearch API call, takes address as string
-    provider
-    .search({ query: form.address })
-    .then(result => {
-      form.latitude = result[0].y
-      form.longitude = result[0].x
-    })
+    if (form.address) {
+      provider
+      .search({ query: form.address })
+      .then(result => {
+        form.latitude = result[0].y
+        form.longitude = result[0].x
+      })
+    }
     this.setState({ form })
   }
 
