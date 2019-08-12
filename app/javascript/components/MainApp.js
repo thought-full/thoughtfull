@@ -7,6 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 
+import Jumbotron from './components/Jumbotron'
 import Navigation from './components/Navigation'
 import Posts from './pages/Posts'
 import Location from './pages/Location'
@@ -106,7 +107,7 @@ class MainApp extends React.Component {
 
     return (
       <React.Fragment>
-
+        <Jumbotron />
         <Navigation
           posts={posts}
           logged_in={this.props.logged_in}
