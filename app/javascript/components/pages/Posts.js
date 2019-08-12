@@ -3,8 +3,6 @@ import PropTypes from "prop-types"
 import { Link } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
-import Map from './../components/Map'
-
 class Posts extends React.Component {
   render() {
     const { posts, currentUserId, deletePost } = this.props
@@ -16,22 +14,24 @@ class Posts extends React.Component {
       {posts.reduce((filtered, post) => {
         if(post.public_view == true){
           filtered.push(
-            <div 
+            <div
               className="card border-primary mb-3 card-width"
               key={post.id}
             >
-              <div className="card-header">Header</div>
+              <div className="card-header">{post.created_at}</div>
               <div className="card-body">
-              <h4 className="card-title">Primary card title</h4>
-              <p className="card-text">
+              <h4 className="card-title">Title</h4>
+              <div className="card-text">
                 {post.body}
+                <hr />
+                {post.address}
                 {post.user_id === currentUserId &&
                   <div>
                     <button onClick={() => deletePost(post.id)}>Delete Post</button>
                     <Link to={`/edit/${post.id}`}>Edit</Link>
                   </div>
                 }
-              </p>
+              </div>
               </div>
             </div>
           )
@@ -39,9 +39,6 @@ class Posts extends React.Component {
         return filtered
       }, [])}
       </div>
-      </Container>
-      <Container>
-        <Map />
       </Container>
     </React.Fragment>
     )
