@@ -2,6 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Form, Button } from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
+// Import geosearch
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
+
+
+
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -10,7 +15,10 @@ class NewPost extends React.Component {
       form: {
         date: "",
         body: "",
-        public_view: false
+        public_view: false,
+        address: "",
+        latitude: null,
+        longitude: null
       },
       createSuccess: false
     }
@@ -29,6 +37,16 @@ class NewPost extends React.Component {
     const { form } = this.state
     const { name, value } = e.target
     form[name] = value
+
+    // Leaflet geosearch variables, setup, search
+    const provider = new OpenStreetMapProvider();
+    // Leaflet geosearch API call, takes address as string
+    provider
+    .search({ query: form.address })
+    .then(result => {
+      form.latitude = result[0].y
+      form.longitude = result[0].x
+    })
     this.setState({ form })
   }
 
@@ -40,7 +58,7 @@ class NewPost extends React.Component {
   }
 
   render () {
-    const { date, body, public_view } = this.state.form
+    const { date, body, public_view, address } = this.state.form
     const { createSuccess } = this.state
     return (
       <React.Fragment>
@@ -50,21 +68,23 @@ class NewPost extends React.Component {
         <Form>
           <Form.Group>
             <Form.Label>Date</Form.Label>
-            <Form.Control onChange={this.onChange} id = "date" name="date" value={date} type="text" placeholder="Enter date" />
+            <Form.Control onChange={this.onChange} id="date" name="date" value={date} type="text" placeholder="Enter date" />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Body</Form.Label>
-            <Form.Control onChange={this.onChange} id = "body" name="body" value={body} type="text" placeholder="Enter thought" />
+            <Form.Control onChange={this.onChange} id="body" name="body" value={body} type="text" placeholder="Enter thought" />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Address</Form.Label>
+            <Form.Control onChange={this.onChange} id="address" name="address" value={address} type="text" placeholder="Enter address" />
           </Form.Group>
 
           <div className="custom-control custom-switch">
             <input onChange={this.togglesPublicView} name="public_view" type="checkbox" className="custom-control-input" id="customSwitch1" checked={public_view}></input>
             <label className="custom-control-label" htmlFor="customSwitch1">Make thought public?</label>
           </div>
-
-
-
 
           <Button onClick={this.localSubmit} variant="primary">
             Submit
