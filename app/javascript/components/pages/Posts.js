@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Map from "./../components/Map";
-import EditPost from "./EditPost";
 
 class Posts extends React.Component {
   constructor(props) {
@@ -49,7 +48,9 @@ class Posts extends React.Component {
               <h1>Posts</h1>
               <div className="card-flex">
                 {posts.reduce((filtered, post) => {
-                  if (post.public_view === true) {
+                  if (
+                    post.public_view === true
+                  ) {
                     filtered.push(
                       <div
                         className="card border-primary mb-3 card-width"
