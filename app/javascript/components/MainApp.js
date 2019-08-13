@@ -101,7 +101,6 @@ class MainApp extends React.Component {
 
     return (
       <React.Fragment>
-        <Jumbotron />
         <Navigation
           posts={posts}
           logged_in={this.props.logged_in}
@@ -117,12 +116,15 @@ class MainApp extends React.Component {
             path="/"
             render={props => {
               return (
-                <Posts
+                <div>
+                  <Jumbotron />
+                  <Posts
                   {...props}
                   currentUserId={current_user_id}
                   posts={posts}
                   deletePost={this.deletePost}
-                />
+                  />
+                </div>
               );
             }}
           />
