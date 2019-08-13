@@ -21,3 +21,9 @@
      height: 80vh;
      width: 100%;
  }
+
+ body { 
+   padding-top: 10px;
+   padding-left: 10px;
+   padding-right: 10px;
+ }
