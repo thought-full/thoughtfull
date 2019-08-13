@@ -56,17 +56,22 @@ class Posts extends React.Component {
                       >
                         <div className="card-header">{post.created_at}</div>
                         <div className="card-body">
-                          <h4 className="card-title">Title</h4>
+                          <h4 className="card-title">{post.date}</h4>
                           <div className="card-text">
                             {post.body}
                             <hr />
                             {post.address}
                             {post.user_id === currentUserId && (
                               <div>
-                                <button onClick={() => deletePost(post.id)}>
+                                <button class="btn btn-primary btn-sm" onClick={() => deletePost(post.id)}>
                                   Delete Post
                                 </button>
-                                <Link to={`/edit/${post.id}`}>Edit</Link>
+                                <div class="divider"/>
+                                <button class="btn btn-primary btn-sm" onClick={() => 
+                                  <Link to={`/edit/${post.id}`}></Link>
+                                }>
+                                  Edit Post
+                                </button>
                               </div>
                             )}
                           </div>

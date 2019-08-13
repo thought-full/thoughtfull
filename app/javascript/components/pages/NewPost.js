@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 // Import geosearch
 import { OpenStreetMapProvider } from "leaflet-geosearch";
@@ -61,31 +61,32 @@ class NewPost extends React.Component {
         <h1>Create a New Post</h1>
 
         <Form>
-          <Form.Group>
+          <Form.Group as={Col} md="4">
             <Form.Label>Date</Form.Label>
             <Form.Control
               onChange={this.onChange}
               id="date"
               name="date"
               value={date}
-              type="text"
-              placeholder="Enter date"
+              type="date"
+              placeholder="When was this?"
             />
           </Form.Group>
 
-          <Form.Group>
+          <Form.Group as={Col}>
             <Form.Label>Body</Form.Label>
             <Form.Control
               onChange={this.onChange}
               id="body"
               name="body"
               value={body}
+              required
               type="text"
-              placeholder="Enter thought"
+              placeholder="What are you thinking?"
             />
           </Form.Group>
 
-          <Form.Group>
+          <Form.Group as={Col} md="4">
             <Form.Label>Address</Form.Label>
             <Form.Control
               onChange={this.onChange}
@@ -93,7 +94,7 @@ class NewPost extends React.Component {
               name="address"
               value={address}
               type="text"
-              placeholder="Enter address"
+              placeholder="Where was this at?"
             />
           </Form.Group>
 
