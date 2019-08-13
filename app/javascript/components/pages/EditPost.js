@@ -7,7 +7,7 @@ class EditPost extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      postAttrs: {},    
+      postAttrs: {},
       editSuccess: false
     }
   }
@@ -64,12 +64,17 @@ class EditPost extends React.Component {
         <Form>
           <Form.Group>
             <Form.Label>Date</Form.Label>
-            <Form.Control onChange={this.onChange} name="date" value={postAttrs.date} type="text" placeholder="Enter date" />
+            <Form.Control onChange={this.onChange} name="date" value={postAttrs.date} type="date" placeholder="Enter date" />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Body</Form.Label>
             <Form.Control onChange={this.onChange} name="body" value={postAttrs.body} type="text" placeholder="Enter thought" />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Address</Form.Label>
+            <Form.Control onChange={this.onChange} name="address" value={postAttrs.address} type="text" placeholder="Enter address" />
           </Form.Group>
 
           <div className="custom-control custom-switch">
