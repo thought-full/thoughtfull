@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Map from "./../components/Map";
+import EditPost from "./EditPost";
 
 class Posts extends React.Component {
   constructor(props) {
@@ -63,15 +64,13 @@ class Posts extends React.Component {
                             {post.address}
                             {post.user_id === currentUserId && (
                               <div>
-                                <button class="btn btn-primary btn-sm" onClick={() => deletePost(post.id)}>
+                                <button className="btn btn-primary btn-sm" onClick={() => deletePost(post.id)}>
                                   Delete Post
                                 </button>
-                                <div class="divider"/>
-                                <button class="btn btn-primary btn-sm" onClick={() => 
-                                  <Link to={`/edit/${post.id}`}></Link>
-                                }>
+                                <div className="divider"/>
+                                <Link to={`/edit/${post.id}`} className="btn btn-primary btn-sm">
                                   Edit Post
-                                </button>
+                                </Link> 
                               </div>
                             )}
                           </div>
