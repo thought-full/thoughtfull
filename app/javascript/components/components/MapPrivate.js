@@ -13,12 +13,66 @@ const stamenTonerAttr =
 class MapPrivate extends React.Component {
   render() {
     const { posts, currentUserId, deletePost } = this.props;
+    let privatePosts = posts.reduce((filtered, post) => {
+      if (
+        post.public_view === false &&
+        post.user_id === currentUserId &&
+        post.latitude !== null
+      ) {
+        filtered.push(post);
+      }
+      return filtered;
+    }, []);
+
+    let minLat = null;
+    let maxLat = null;
+    let minLong = null;
+    let maxLong = null;
+
+    if (privatePosts[0]) {
+      minLat = Math.min(
+        ...publicPosts.map(post => {
+          return parseFloat(post.latitude);
+        })
+      );
+      maxLat = Math.max(
+        ...publicPosts.map(post => {
+          return parseFloat(post.latitude);
+        })
+      );
+      minLong = Math.min(
+        ...publicPosts.map(post => {
+          return parseFloat(post.longitude);
+        })
+      );
+      maxLong = Math.max(
+        ...publicPosts.map(post => {
+          return parseFloat(post.longitude);
+        })
+      );
+    } else {
+      minLat = 32.7157;
+      maxLat = 32.7157;
+      minLong = -117.1611;
+      maxLong = -117.1611;
+    }
+
+    const centerLat = (minLat + maxLat) / 2;
+    const distanceLat = maxLat - minLat;
+    const bufferLat = distanceLat * 0.05;
+    const centerLong = (minLong + maxLong) / 2;
+    const distanceLong = maxLong - minLong;
+    const bufferLong = distanceLong * 0.15;
     return (
       <React.Fragment>
         <Container>
           <h1>Map</h1>
           <LeafletMap
-            center={[32.715736, -117.161087]}
+            center={[centerLat, centerLong]}
+            bounds={[
+              [minLat - bufferLat, minLong - bufferLong],
+              [maxLat + bufferLat, maxLong + bufferLong]
+            ]}
             zoom={14}
             maxZoom={20}
             attributionControl={true}

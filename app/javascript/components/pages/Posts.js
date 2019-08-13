@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Map from "./../components/Map";
+import EditPost from "./EditPost";
 
 class Posts extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Posts extends React.Component {
               <h1>Posts</h1>
               <div className="card-flex">
                 {posts.reduce((filtered, post) => {
-                  if (post.public_view == true) {
+                  if (post.public_view === true) {
                     filtered.push(
                       <div
                         className="card border-primary mb-3 card-width"
@@ -56,19 +57,26 @@ class Posts extends React.Component {
                       >
                         <div className="card-header">{post.created_at}</div>
                         <div className="card-body">
-                          <h4 className="card-title">Title</h4>
+                          <h4 className="card-title">{post.date}</h4>
                           <div className="card-text">
                             {post.body}
                             <hr />
                             {post.address}
                             {post.user_id === currentUserId && (
                               <div>
-                                <button onClick={() => deletePost(post.id)}>
+                                <button
+                                  className="btn btn-primary btn-sm"
+                                  onClick={() => deletePost(post.id)}
+                                >
                                   Delete Post
                                 </button>
-                                <Router>
-                                <Link to={`/edit/${post.id}`}>Edit</Link>
-                                </Router>
+                                <div className="divider" />
+                                <Link
+                                  to={`/edit/${post.id}`}
+                                  className="btn btn-primary btn-sm"
+                                >
+                                  Edit Post
+                                </Link>
                               </div>
                             )}
                           </div>

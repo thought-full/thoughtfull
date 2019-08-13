@@ -13,12 +13,48 @@ const stamenTonerAttr =
 class Map extends React.Component {
   render() {
     const { posts, currentUserId, deletePost } = this.props;
+    let publicPosts = posts.reduce((filtered, post) => {
+      if (post.public_view === true && post.latitude !== null) {
+        filtered.push(post);
+      }
+      return filtered;
+    }, []);
+    let minLat = Math.min(
+      ...publicPosts.map(post => {
+        return parseFloat(post.latitude);
+      })
+    );
+    let maxLat = Math.max(
+      ...publicPosts.map(post => {
+        return parseFloat(post.latitude);
+      })
+    );
+    let minLong = Math.min(
+      ...publicPosts.map(post => {
+        return parseFloat(post.longitude);
+      })
+    );
+    let maxLong = Math.max(
+      ...publicPosts.map(post => {
+        return parseFloat(post.longitude);
+      })
+    );
+    const centerLat = (minLat + maxLat) / 2;
+    const distanceLat = maxLat - minLat;
+    const bufferLat = distanceLat * 0.05;
+    const centerLong = (minLong + maxLong) / 2;
+    const distanceLong = maxLong - minLong;
+    const bufferLong = distanceLong * 0.15;
     return (
       <React.Fragment>
         <Container>
           <h1>Map</h1>
           <LeafletMap
-            center={[32.715736, -117.161087]}
+            center={[centerLat, centerLong]}
+            bounds={[
+              [minLat - bufferLat, minLong - bufferLong],
+              [maxLat + bufferLat, maxLong + bufferLong]
+            ]}
             zoom={14}
             maxZoom={20}
             attributionControl={true}
