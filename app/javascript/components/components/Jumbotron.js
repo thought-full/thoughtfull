@@ -17,9 +17,6 @@ class Jumbotron extends React.Component {
           it?
         </p>
         <p className="lead">
-          <a className="btn btn-primary btn-lg" href="#" role="button">
-            Learn more
-          </a>
           <a className="btn btn-primary btn-lg" href="/about" role="button">
             Learn more
           </a>
