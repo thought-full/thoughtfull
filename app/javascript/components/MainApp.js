@@ -128,8 +128,6 @@ class MainApp extends React.Component {
           />
 
           <Route
-<<<<<<< HEAD
-=======
             path="/about"
             render={props => {
               return (
@@ -158,10 +156,9 @@ class MainApp extends React.Component {
           />
 
           <Route
->>>>>>> master
             path="/private"
-            render={(props) => {
-              return(
+            render={props => {
+              return (
                 <Private
                   {...props}
                   currentUserId={current_user_id}
