@@ -66,7 +66,11 @@ class Posts extends React.Component {
                                 <button onClick={() => deletePost(post.id)}>
                                   Delete Post
                                 </button>
-                                <Link to={`/edit/${post.id}`}>Edit</Link>
+                                <button onClick={() => 
+                                  <Link to={`/edit/${post.id}`}></Link>
+                                }>
+                                  Edit Post
+                                </button>
                               </div>
                             )}
                           </div>
