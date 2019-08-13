@@ -15,7 +15,7 @@ class Navigation extends React.Component {
 
     return (
       <React.Fragment>
-        <Navbar bg="primary" sticky="top">
+        <Navbar bg="primary" sticky="top" className="navstyle">
           <Nav.Link href="/">
             <img
               src={Logo}
