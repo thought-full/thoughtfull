@@ -57,17 +57,30 @@ class Private extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">Header</div>
+                        <div className="card-header">{post.created_at}</div>
                         <div className="card-body">
-                          <h4 className="card-title">Primary card title</h4>
+                          <h4 className="card-title">{post.date}</h4>
                           <div className="card-text">
                             {post.body}
-                            <div>
-                              <button onClick={() => deletePost(post.id)}>
-                                Delete Post
-                              </button>
-                              <Link to={`/edit/${post.id}`}>Edit</Link>
-                            </div>
+                            <hr />
+                            {post.address}
+                            {post.user_id === currentUserId && (
+                              <div>
+                                <button
+                                  className="btn btn-primary btn-sm"
+                                  onClick={() => deletePost(post.id)}
+                                >
+                                  Delete Post
+                                </button>
+                                <div className="divider" />
+                                <Link
+                                  to={`/edit/${post.id}`}
+                                  className="btn btn-primary btn-sm"
+                                >
+                                  Edit Post
+                                </Link>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -78,7 +91,7 @@ class Private extends React.Component {
               </div>
             </div>
           )}
-
+          
           {!this.state.showMap && <MapPrivate {...this.props} />}
         </Container>
       </React.Fragment>
