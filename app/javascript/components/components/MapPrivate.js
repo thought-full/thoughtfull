@@ -10,7 +10,7 @@ const stamenTonerTiles =
 const stamenTonerAttr =
   'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
-class Map extends React.Component {
+class MapPrivate extends React.Component {
   render() {
     const { posts, currentUserId, deletePost } = this.props;
     return (
@@ -32,7 +32,11 @@ class Map extends React.Component {
             <TileLayer attribution={stamenTonerAttr} url={stamenTonerTiles} />
 
             {posts.reduce((filtered, post) => {
-              if (post.public_view === true && post.latitude !== null) {
+              if (
+                post.public_view === false &&
+                post.user_id === currentUserId &&
+                post.latitude !== null
+              ) {
                 filtered.push(
                   <Marker
                     key={post.id}
@@ -74,4 +78,4 @@ class Map extends React.Component {
   }
 }
 
-export default Map;
+export default MapPrivate;
