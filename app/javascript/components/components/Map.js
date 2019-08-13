@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 // Import Leaflet
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 
@@ -91,7 +91,9 @@ class Map extends React.Component {
                                 <button onClick={() => deletePost(post.id)}>
                                   Delete Post
                                 </button>
+                                <Router>
                                 <Link to={`/edit/${post.id}`}>Edit</Link>
+                                </Router>
                               </div>
                             )}
                           </div>
