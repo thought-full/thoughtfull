@@ -10,7 +10,11 @@ class Jumbotron extends React.Component {
         <hr className="my-4"/>
           <p>What made today different from every day in your life that came before it?</p>
           <p className="lead">
+<<<<<<< HEAD
             <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+=======
+            <a className="btn btn-primary btn-lg" href="/about" role="button">Learn more</a>
+>>>>>>> master
           </p>
       </div>
     )

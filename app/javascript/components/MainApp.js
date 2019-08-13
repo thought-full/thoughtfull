@@ -8,6 +8,7 @@ import Posts from "./pages/Posts";
 import NewPost from "./pages/NewPost";
 import EditPost from "./pages/EditPost";
 import Private from "./pages/Private";
+import About from "./pages/About";
 import SignIn from "./components/SignIn";
 
 class MainApp extends React.Component {
@@ -127,9 +128,40 @@ class MainApp extends React.Component {
           />
 
           <Route
-            path="/private"
+<<<<<<< HEAD
+=======
+            path="/about"
             render={props => {
               return (
+                <About
+                  {...props}
+                  currentUserId={current_user_id}
+                  posts={posts}
+                  deletePost={this.deletePost}
+                />
+              );
+            }}
+          />
+
+          <Route
+            path="/location"
+            render={props => {
+              return (
+                <Location
+                  {...props}
+                  currentUserId={current_user_id}
+                  posts={posts}
+                  deletePost={this.deletePost}
+                />
+              );
+            }}
+          />
+
+          <Route
+>>>>>>> master
+            path="/private"
+            render={(props) => {
+              return(
                 <Private
                   {...props}
                   currentUserId={current_user_id}
