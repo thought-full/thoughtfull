@@ -13,23 +13,24 @@
  *= require_tree .
  *= require_self
  */
- * {
-   box-sizing: border-box;
- }
 
- .leaflet-container {
-     height: 80vh;
-     width: 100%;
- }
+* {
+  box-sizing: border-box;
+}
 
- body { 
-   padding-top: 10px;
-   padding-left: 10px;
-   padding-right: 10px;
- }
+.leaflet-container {
+  height: 80vh;
+  width: 100%;
+}
 
- .divider{
-  width:5px;
-  height:auto;
-  display:inline-block;
+body {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.divider {
+  width: 5px;
+  height: auto;
+  display: inline-block;
 }
