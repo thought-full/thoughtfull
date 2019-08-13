@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Map from "./../components/Map";
 
@@ -66,7 +66,9 @@ class Posts extends React.Component {
                                 <button onClick={() => deletePost(post.id)}>
                                   Delete Post
                                 </button>
+                                <Router>
                                 <Link to={`/edit/${post.id}`}>Edit</Link>
+                                </Router>
                               </div>
                             )}
                           </div>
