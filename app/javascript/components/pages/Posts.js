@@ -48,7 +48,7 @@ class Posts extends React.Component {
               <h1>Posts</h1>
               <div className="card-flex">
                 {posts.reduce((filtered, post) => {
-                  if (post.public_view == true) {
+                  if (post.public_view === true) {
                     filtered.push(
                       <div
                         className="card border-primary mb-3 card-width"
