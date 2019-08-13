@@ -56,7 +56,7 @@ class Posts extends React.Component {
                       >
                         <div className="card-header">{post.created_at}</div>
                         <div className="card-body">
-                          <h4 className="card-title">Title</h4>
+                          <h4 className="card-title">{post.date}</h4>
                           <div className="card-text">
                             {post.body}
                             <hr />
