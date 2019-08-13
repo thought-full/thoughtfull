@@ -63,13 +63,19 @@ class Posts extends React.Component {
                             {post.address}
                             {post.user_id === currentUserId && (
                               <div>
-                                <button class="btn btn-primary btn-sm" onClick={() => deletePost(post.id)}>
+                                <button
+                                  className="btn btn-primary btn-sm"
+                                  onClick={() => deletePost(post.id)}
+                                >
                                   Delete Post
                                 </button>
-                                <div class="divider"/>
-                                <button class="btn btn-primary btn-sm" onClick={() => 
-                                  <Link to={`/edit/${post.id}`}></Link>
-                                }>
+                                <div className="divider" />
+                                <button
+                                  className="btn btn-primary btn-sm"
+                                  onClick={() => (
+                                    <Link to={`/edit/${post.id}`}></Link>
+                                  )}
+                                >
                                   Edit Post
                                 </button>
                               </div>
