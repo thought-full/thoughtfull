@@ -31,22 +31,22 @@ class MapPrivate extends React.Component {
 
     if (privatePosts[0]) {
       minLat = Math.min(
-        ...publicPosts.map(post => {
+        ...privatePosts.map(post => {
           return parseFloat(post.latitude);
         })
       );
       maxLat = Math.max(
-        ...publicPosts.map(post => {
+        ...privatePosts.map(post => {
           return parseFloat(post.latitude);
         })
       );
       minLong = Math.min(
-        ...publicPosts.map(post => {
+        ...privatePosts.map(post => {
           return parseFloat(post.longitude);
         })
       );
       maxLong = Math.max(
-        ...publicPosts.map(post => {
+        ...privatePosts.map(post => {
           return parseFloat(post.longitude);
         })
       );

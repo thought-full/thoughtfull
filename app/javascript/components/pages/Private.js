@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import MapPrivate from "./../components/MapPrivate";
 
-class Posts extends React.Component {
+class Private extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,4 +86,4 @@ class Posts extends React.Component {
   }
 }
 
-export default Posts;
+export default Private;
