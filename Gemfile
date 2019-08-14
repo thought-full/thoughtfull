@@ -63,3 +63,4 @@ gem "react-rails", "~> 2.6"
 gem "bootstrap", "~> 4.3"
 
 gem "rspec-rails", "~> 3.8"
+gem "aws-sdk-s3", "~> 1.46"

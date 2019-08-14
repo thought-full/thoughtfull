@@ -53,7 +53,7 @@ class EditPost extends React.Component {
       this.setState({postAttrs: response})
     })
   }
-// FIXME: Date field should autoload previously saved date.
+
   render () {
     const { postAttrs } = this.state
     const { editSuccess } = this.state
@@ -65,7 +65,7 @@ class EditPost extends React.Component {
         <Form onSubmit={this.localSubmit}>
           <Form.Group>
             <Form.Label>Date</Form.Label>
-            <Form.Control onChange={this.onChange} name="date" value={postAttrs.date} type="date" placeholder="Enter date" />
+            <Form.Control required onChange={this.onChange} name="date" value={postAttrs.date} type="date" placeholder="Enter date" />
           </Form.Group>
 
           <Form.Group>
