@@ -1,9 +1,19 @@
+<<<<<<< HEAD
+import React from "react"
+import PropTypes from "prop-types"
+import {
+  Navbar,
+  Nav
+} from 'react-bootstrap'
+import Logo from './images/tf_icon_transparent.png'
+=======
 import React from "react";
 import PropTypes from "prop-types";
 import { Navbar, Nav } from "react-bootstrap";
 import Logo from "./images/tf_icon_transparent.png";
 import "./navigation.scss";
 import SignIn from "./SignIn";
+>>>>>>> master
 
 class Navigation extends React.Component {
   render() {
