@@ -1,5 +1,5 @@
 import React from "react";
-import Image from './images/tf_logo_white_bkgd.png'
+import Image from './images/tf_logo_white_bkgd.png';
 
 class Jumbotron extends React.Component {
   render() {
