@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Navbar, Nav } from "react-bootstrap";
 import Logo from "./images/tf_icon_transparent.png";
 import "./navigation.scss";
+import SignIn from "./SignIn";
 
 class Navigation extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class Navigation extends React.Component {
 
     return (
       <React.Fragment>
-        <Navbar bg="primary" sticky="top">
+        <Navbar bg="primary" sticky="top" className="navstyle">
           <Nav.Link href="/">
             <img
               src={Logo}
@@ -51,6 +52,8 @@ class Navigation extends React.Component {
               Sign In
             </Nav.Link>
           )}
+
+          <SignIn />
         </Navbar>
       </React.Fragment>
     );
