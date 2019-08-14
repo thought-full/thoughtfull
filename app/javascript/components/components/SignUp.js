@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Modal, ButtonToolbar, Button, Form } from "react-bootstrap";
-import SignUp from "./SignUp";
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalShow: false,
       form: {
+        username: "",
         email: "",
-        password: ""
+        password: "",
+        password_confirmation: ""
       }
     };
   }
@@ -26,10 +27,10 @@ class SignIn extends React.Component {
     this.setState({ form });
   };
 
-  handleUserLogin = () => {
+  handleUserSignUp = () => {
     const user = { user: this.state.form };
     console.log(user);
-    return fetch("/users/sign_in", {
+    return fetch("/users", {
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
       method: "POST"
@@ -37,7 +38,7 @@ class SignIn extends React.Component {
       if (resp.redirected === true) {
         window.location.replace("/");
       } else {
-        alert("Sign in information incorrect");
+        alert("Sign up information incorrect");
       }
     });
   };
@@ -47,7 +48,7 @@ class SignIn extends React.Component {
       <React.Fragment>
         <ButtonToolbar>
           <Button variant="primary" onClick={this.toggleModalShow}>
-            Sign In
+            Sign Up
           </Button>
 
           <Modal
@@ -59,39 +60,62 @@ class SignIn extends React.Component {
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                Sign In
+                Sign Up
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form>
+                <Form.Group>
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    onChange={this.onChange}
+                    id="username"
+                    name="username"
+                    value={this.state.form.username}
+                    type="text"
+                    placeholder="Enter username"
+                  />
+                </Form.Group>
+
                 <Form.Group>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     onChange={this.onChange}
                     id="email"
                     name="email"
-                    value={this.state.email}
+                    value={this.state.form.email}
                     type="email"
                     placeholder="Enter email"
                   />
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label>Password (6 characters minimum) </Form.Label>
                   <Form.Control
                     onChange={this.onChange}
                     id="password"
                     name="password"
-                    value={this.state.password}
+                    value={this.state.form.password}
                     type="password"
                     placeholder="Enter password"
                   />
                 </Form.Group>
 
-                <Button onClick={this.handleUserLogin} variant="primary">
-                  Sign In
+                <Form.Group>
+                  <Form.Label>Password confirmation</Form.Label>
+                  <Form.Control
+                    onChange={this.onChange}
+                    id="password_confirmation"
+                    name="password_confirmation"
+                    value={this.state.form.password_confirmation}
+                    type="password"
+                    placeholder="Enter password again"
+                  />
+                </Form.Group>
+
+                <Button onClick={this.handleUserSignUp} variant="primary">
+                  Sign Up
                 </Button>
-                <SignUp />
               </Form>
             </Modal.Body>
             <Modal.Footer>
@@ -104,4 +128,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default SignUp;

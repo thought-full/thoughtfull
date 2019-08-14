@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-import React from "react"
-import PropTypes from "prop-types"
-import {
-  Navbar,
-  Nav
-} from 'react-bootstrap'
-import Logo from './images/tf_icon_transparent.png'
-=======
 import React from "react";
 import PropTypes from "prop-types";
 import { Navbar, Nav } from "react-bootstrap";
 import Logo from "./images/tf_icon_transparent.png";
 import "./navigation.scss";
 import SignIn from "./SignIn";
->>>>>>> master
+import SignUp from "./SignUp";
 
 class Navigation extends React.Component {
   render() {
@@ -57,13 +48,7 @@ class Navigation extends React.Component {
               Sign Out
             </Nav.Link>
           )}
-          {!logged_in && (
-            <Nav.Link style={{ color: "white" }} href={sign_in_route}>
-              Sign In
-            </Nav.Link>
-          )}
-
-          <SignIn />
+          {!logged_in && <SignIn />}
         </Navbar>
       </React.Fragment>
     );
