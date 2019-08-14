@@ -7,7 +7,7 @@ class EditPost extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      postAttrs: {},    
+      postAttrs: {},
       editSuccess: false
     }
   }
@@ -22,7 +22,8 @@ class EditPost extends React.Component {
       }
   }
 
-  localSubmit = () => {
+  localSubmit = (e) => {
+    e.preventDefault()
     const { editPost } = this.props
     const { postAttrs } = this.state
     editPost(postAttrs.id, postAttrs)
@@ -52,7 +53,7 @@ class EditPost extends React.Component {
       this.setState({postAttrs: response})
     })
   }
-
+// FIXME: Date field should autoload previously saved date.
   render () {
     const { postAttrs } = this.state
     const { editSuccess } = this.state
@@ -61,15 +62,20 @@ class EditPost extends React.Component {
         {editSuccess && <Redirect to="/" /> }
         <h1>Edit Post</h1>
 
-        <Form>
+        <Form onSubmit={this.localSubmit}>
           <Form.Group>
             <Form.Label>Date</Form.Label>
-            <Form.Control onChange={this.onChange} name="date" value={postAttrs.date} type="text" placeholder="Enter date" />
+            <Form.Control onChange={this.onChange} name="date" value={postAttrs.date} type="date" placeholder="Enter date" />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Body</Form.Label>
-            <Form.Control onChange={this.onChange} name="body" value={postAttrs.body} type="text" placeholder="Enter thought" />
+            <Form.Control required onChange={this.onChange} name="body" value={postAttrs.body} type="text" placeholder="Enter thought" />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Address</Form.Label>
+            <Form.Control onChange={this.onChange} name="address" value={postAttrs.address} type="text" placeholder="Enter address" />
           </Form.Group>
 
           <div className="custom-control custom-switch">
@@ -77,7 +83,7 @@ class EditPost extends React.Component {
             <label className="custom-control-label" htmlFor="customSwitch1">Make thought public?</label>
           </div>
 
-          <Button onClick={this.localSubmit} variant="primary">
+          <Button type="submit" variant="primary">
             Save & Update
           </Button>
         </Form>

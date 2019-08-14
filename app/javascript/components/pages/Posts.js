@@ -48,17 +48,16 @@ class Posts extends React.Component {
               <h1>Posts</h1>
               <div className="card-flex">
                 {posts.reduce((filtered, post) => {
-                  if (
-                    post.public_view === true
-                  ) {
+                  if (post.public_view === true) {
                     filtered.push(
                       <div
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">{post.created_at}</div>
+                        <div className="card-header">
+                          {post.date.slice(0, post.date.indexOf("T"))}
+                        </div>
                         <div className="card-body">
-                          <h4 className="card-title">{post.date}</h4>
                           <div className="card-text">
                             {post.body}
                             <hr />

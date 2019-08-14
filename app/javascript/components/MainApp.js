@@ -62,10 +62,11 @@ class MainApp extends React.Component {
       body: JSON.stringify({ post: attrs })
     })
       .then(response => {
-        if (response.status === 202) {
+        if (response.status === 200) {
           this.getPosts();
-        } else {
           return response.json();
+        } else {
+          return alert({error: payload.error})
         }
       })
       .then(payload => {

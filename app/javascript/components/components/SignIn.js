@@ -9,8 +9,7 @@ class SignIn extends React.Component {
       modalShow: false,
       form: {
         email: "",
-        password: "",
-        remember_me: ""
+        password: ""
       }
     };
   }
@@ -26,8 +25,20 @@ class SignIn extends React.Component {
     this.setState({ form });
   };
 
-  localSubmit = () => {
-    console.log(this.state);
+  handleUserLogin = () => {
+    const user = { user: this.state.form };
+    console.log(user);
+    return fetch("/users/sign_in", {
+      body: JSON.stringify(user),
+      headers: { "Content-Type": "application/json" },
+      method: "POST"
+    }).then(resp => {
+      if (resp.redirected === true) {
+        window.location.replace("/");
+      } else {
+        alert("Sign in information incorrect");
+      }
+    });
   };
 
   render() {
@@ -76,7 +87,7 @@ class SignIn extends React.Component {
                   />
                 </Form.Group>
 
-                <Button onClick={this.localSubmit} variant="primary">
+                <Button onClick={this.handleUserLogin} variant="primary">
                   Submit
                 </Button>
               </Form>
@@ -92,53 +103,3 @@ class SignIn extends React.Component {
 }
 
 export default SignIn;
-
-function MyVerticallyCenteredModal(props) {
-  const { onChange, localSubmit } = props;
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Log In</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              onChange={this.onChange}
-              id="email"
-              name="email"
-              value={this.state.email}
-              type="email"
-              placeholder="Enter email"
-            />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              onChange={this.onChange}
-              id="password"
-              name="password"
-              value={this.state.password}
-              type="password"
-              placeholder="Enter password"
-            />
-          </Form.Group>
-
-          <Button onClick={this.localSubmit} variant="primary">
-            Submit
-          </Button>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}

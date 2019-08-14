@@ -21,7 +21,8 @@ class NewPost extends React.Component {
     };
   }
 
-  localSubmit = () => {
+  localSubmit = (e) => {
+    e.preventDefault()
     const { createPost } = this.props;
     const { form } = this.state;
     createPost(form).then(() => {
@@ -60,10 +61,11 @@ class NewPost extends React.Component {
         {createSuccess && <Redirect to="/" />}
         <h1>Create a New Post</h1>
 
-        <Form>
-          <Form.Group as={Col} md="4">
+        <Form onSubmit={this.localSubmit}>
+          <Form.Group as={Col} md="3">
             <Form.Label>Date</Form.Label>
             <Form.Control
+              required
               onChange={this.onChange}
               id="date"
               name="date"
@@ -76,11 +78,11 @@ class NewPost extends React.Component {
           <Form.Group as={Col}>
             <Form.Label>Body</Form.Label>
             <Form.Control
+              required
               onChange={this.onChange}
               id="body"
               name="body"
               value={body}
-              required
               type="text"
               placeholder="What are you thinking?"
             />
@@ -112,7 +114,7 @@ class NewPost extends React.Component {
             </label>
           </div>
 
-          <Button onClick={this.localSubmit} variant="primary">
+          <Button type="submit" variant="primary">
             Submit
           </Button>
         </Form>
