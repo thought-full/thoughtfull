@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 // Import Leaflet
-import { Map as LeafletMap, TileLayer, Marker, Popup} from "react-leaflet";
+import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet'
 
 // Map TileLayer variables
@@ -93,7 +93,6 @@ class Map extends React.Component {
                       >
                         <div className="card-header">{post.created_at}</div>
                         <div className="card-body">
-                          <h4 className="card-title">Title</h4>
                           <div className="card-text">
                             {post.body}
                             <hr />
@@ -127,7 +126,6 @@ class Map extends React.Component {
                       >
                         <div className="card-header">{post.created_at}</div>
                         <div className="card-body">
-                          <h4 className="card-title">Title</h4>
                           <div className="card-text">
                             {post.body}
                             <hr />
