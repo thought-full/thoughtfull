@@ -21,7 +21,8 @@ class NewPost extends React.Component {
     };
   }
 
-  localSubmit = () => {
+  localSubmit = (e) => {
+    e.preventDefault()
     const { createPost } = this.props;
     const { form } = this.state;
     createPost(form).then(() => {
