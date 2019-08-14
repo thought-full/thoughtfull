@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {
   Navbar,
-  Nav,
+  Nav
 } from 'react-bootstrap'
 import Logo from './images/tf_icon_transparent.png'
 
