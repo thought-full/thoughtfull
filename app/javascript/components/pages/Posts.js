@@ -55,7 +55,7 @@ class Posts extends React.Component {
                         key={post.id}
                       >
                         <div className="card-header">
-                          {post.date.slice(0, post.date.indexOf("T"))}
+                          {post.date}
                         </div>
                         <div className="card-body">
                           <div className="card-text">

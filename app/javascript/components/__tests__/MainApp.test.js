@@ -47,7 +47,8 @@ id: 1,
 body: "test post",
 address: '122 W Florentia St, Seattle, WA 92101',
 latitude: '47.64707915',
-longitude: '-122.3592212'
+longitude: '-122.3592212',
+public_view: true
 }]
 const div = document.createElement('div')
 ReactDOM.render(<Map posts = { posts } />, div)
@@ -166,10 +167,13 @@ test('Posts renders without crashing', () => {
 })
 
 test('renders a Home Page that says "Posts"', () => {
+    const slice = jest.fn()
     const posts = [
       { id: 1,
         body: "test post",
-        user_id: 1
+        user_id: 1,
+        public_view: true,
+        date: "1998-05-26T00:00:00.000Z"
     }]
     const app = mount(<Posts posts = {posts}/>);
     expect(app.find('h1').text()).toEqual('Posts')
@@ -182,19 +186,14 @@ test('renders a Home Page that says "Posts"', () => {
         user_id: 1,
         public_view: true
     }]
-    const app = mount(<Posts posts = {posts} currentUserId={1} />);
+    const app = shallow(<Posts posts = {posts} currentUserId={1} />);
     expect(app.find('div.card-text').exists()).toEqual(true)
 })
 
 test('Posts renders without crashing', () => {
   const div = document.createElement('div')
-  // const posts = [
-  //   { id: 1,
-  //     body: "test post",
-  //     user_id: 1
-  //   }]
-    ReactDOM.render(<SignIn />, div)
-  })
+  ReactDOM.render(<SignIn />, div)
+})
 
 // test('Each Post has a delete button that can be clicked', () => {
 //   const clickFn = jest.fn();
