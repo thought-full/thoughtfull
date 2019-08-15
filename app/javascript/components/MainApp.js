@@ -60,19 +60,14 @@ class MainApp extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ post: attrs })
-    })
-      .then(response => {
-        if (response.status === 200) {
-          this.getPosts();
-          return response.json();
-        } else {
-<<<<<<< HEAD
-          return alert({ error: payload.error });
-=======
-          return alert("Error: Did not update")
->>>>>>> master
-        }
-      })
+    }).then(response => {
+      if (response.status === 200) {
+        this.getPosts();
+        return response.json();
+      } else {
+        return alert("Error: Did not update");
+      }
+    });
   };
 
   deletePost = id => {
