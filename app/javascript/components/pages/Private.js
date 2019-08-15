@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import MapPrivate from "./../components/MapPrivate";
+import Votes from "./../components/Votes";
 
 class Private extends React.Component {
   constructor(props) {
@@ -57,7 +58,21 @@ class Private extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">{post.date}</div>
+                      <div className="card-header card-header-grid">
+                        {post.date}
+                        <div className="vote-container">
+                          <Votes
+                            {...this.props}
+                            votes={post.votes}
+                            handleUpvote={() =>
+                              this.props.handleUpvote(post.id)
+                            }
+                            handleDownvote={() =>
+                              this.props.handleDownvote(post.id)
+                            }
+                          />
+                        </div>
+                      </div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
@@ -68,17 +83,17 @@ class Private extends React.Component {
                             <hr />
                             {post.address}
                             {post.user_id === currentUserId && (
-                              <div>
+                              <div className="divider">
                                 <button
                                   className="btn btn-primary btn-sm"
                                   onClick={() => deletePost(post.id)}
                                 >
                                   Delete Post
                                 </button>
-                                <div className="divider" />
                                 <Link
                                   to={`/edit/${post.id}`}
                                   className="btn btn-primary btn-sm"
+                                  id="editbtn"
                                 >
                                   Edit Post
                                 </Link>

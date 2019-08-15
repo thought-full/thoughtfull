@@ -73,6 +73,8 @@ class Posts extends React.Component {
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
+<<<<<<< HEAD
+=======
                             <hr />
                             { post && post.image_url &&
                                 <img src={post.image_url } width="200" height="200" />
@@ -80,6 +82,7 @@ class Posts extends React.Component {
                             <hr />
                             {post.address}
                             <div className="vote-container"></div>
+>>>>>>> master
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button
@@ -88,12 +91,13 @@ class Posts extends React.Component {
                                 >
                                   Delete Post
                                 </button>
-                                  <Link
-                                    to={`/edit/${post.id}`}
-                                    className="btn btn-primary btn-sm"
-                                  >
-                                    Edit Post
-                                  </Link>
+                                <Link
+                                  to={`/edit/${post.id}`}
+                                  className="btn btn-primary btn-sm"
+                                  id="editbtn"
+                                >
+                                  Edit Post
+                                </Link>
                               </div>
                             )}
                           </div>
