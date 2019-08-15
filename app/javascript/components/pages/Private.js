@@ -46,7 +46,7 @@ class Private extends React.Component {
           {this.state.showMap && (
             <div>
               <h1>Private Posts</h1>
-              <div className="card-flex">
+              <div className="card-grid">
                 {posts.reduce((filtered, post) => {
                   if (
                     post.public_view === false &&
@@ -57,14 +57,10 @@ class Private extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">
-                          {post.date}
-                        </div>
+                        <div className="card-header">{post.date}</div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
-                            <hr />
-                            {post.address}
                             {post.user_id === currentUserId && (
                               <div>
                                 <button
