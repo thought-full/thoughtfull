@@ -89,14 +89,11 @@ class EditPost extends React.Component {
             <label className="custom-control-label" htmlFor="customSwitch1">Make thought public?</label>
           </div>
 
-          <Button type="submit" variant="primary">
-            Save & Update
-          </Button>
           <Container>
             { post && post.image_url &&
               <div>
                 <h2>Your Image is: </h2>
-                <img src={post.image_url} />
+                <img src={post.image_url } maxwidth="100%" />
               </div>
             }
             <ActiveStorageProvider
@@ -142,6 +139,9 @@ class EditPost extends React.Component {
               )}
             />
           </Container>
+          <Button type="submit" variant="primary">
+            Save & Update
+          </Button>
         </Form>
 
       </React.Fragment>
