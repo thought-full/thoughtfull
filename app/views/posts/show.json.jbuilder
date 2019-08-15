@@ -1,3 +1,4 @@
+json.id @post.id
 json.date @post.date
 json.body @post.body
 json.public_view @post.public_view
