@@ -15,6 +15,18 @@ class PostsController < ApplicationController
         end
     end
 
+    def upvote
+      @post = Post.find(params[:id])
+      @post.upvote!
+      render json: @post
+    end
+
+    def downvote
+      @post = Post.find(params[:id])
+      @post.downvote!
+      render json: @post
+    end
+
     def show
       @post = Post.find(params[:id])
       if @post
@@ -41,6 +53,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:date, :body, :public_view, :address, :latitude, :longitude, :image)
+        params.require(:post).permit(:date, :body, :public_view, :address, :latitude, :longitude, :votes, :image)
     end
 end
