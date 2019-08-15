@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import MapPrivate from "./../components/MapPrivate";
+import Votes from "./../components/Votes";
 
 class Private extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class Private extends React.Component {
           {this.state.showMap && (
             <div>
               <h1>Private Posts</h1>
-              <div className="card-flex">
+              <div className="card-grid">
                 {posts.reduce((filtered, post) => {
                   if (
                     post.public_view === false &&
@@ -57,26 +58,42 @@ class Private extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">
-                          {post.date}
+                      <div className="card-header card-header-grid">
+                        {post.date}
+                        <div className="vote-container">
+                          <Votes
+                            {...this.props}
+                            votes={post.votes}
+                            handleUpvote={() =>
+                              this.props.handleUpvote(post.id)
+                            }
+                            handleDownvote={() =>
+                              this.props.handleDownvote(post.id)
+                            }
+                          />
                         </div>
+                      </div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
                             <hr />
+                            { post && post.image_url &&
+                                <img src={post.image_url } width="200" height="200" />
+                            }
+                            <hr />
                             {post.address}
                             {post.user_id === currentUserId && (
-                              <div>
+                              <div className="divider">
                                 <button
                                   className="btn btn-primary btn-sm"
                                   onClick={() => deletePost(post.id)}
                                 >
                                   Delete Post
                                 </button>
-                                <div className="divider" />
                                 <Link
                                   to={`/edit/${post.id}`}
                                   className="btn btn-primary btn-sm"
+                                  id="editbtn"
                                 >
                                   Edit Post
                                 </Link>

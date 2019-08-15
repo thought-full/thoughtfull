@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Import Leaflet
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet'
+import Votes from "./Votes"
 
 // Map TileLayer variables
 const stamenTonerTiles =
@@ -113,17 +114,38 @@ class MapPrivate extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">{post.created_at}</div>
+                        <div className="card-header card-header-grid">
+                          {post.date}
+                          <div className="vote-container">
+                            <Votes
+                              {...this.props}
+                              votes={post.votes}
+                              handleUpvote={() =>
+                                this.props.handleUpvote(post.id)
+                              }
+                              handleDownvote={() =>
+                                this.props.handleDownvote(post.id)
+                              }
+                            />
+                          </div>
+                        </div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
-                            <hr />
-                            {post.address}
-                              <div>
-                                <button onClick={() => deletePost(post.id)}>
-                                  Delete Post
-                                </button>
-                                <button href={`/edit/${post.id}`}>Edit</button>
+                            <div className="divider">
+                              <button
+                                className="btn btn-primary btn-sm"
+                                onClick={() => deletePost(post.id)}
+                              >
+                                Delete Post
+                              </button>
+                              <Link
+                                to={`/edit/${post.id}`}
+                                className="btn btn-primary btn-sm"
+                                id="editbtn"
+                              >
+                                Edit Post
+                              </Link>
                               </div>
                           </div>
                         </div>
