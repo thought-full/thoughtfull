@@ -53,7 +53,6 @@ class EditPost extends React.Component {
       this.setState({postAttrs: response})
     })
   }
-// FIXME: Date field should autoload previously saved date.
   render () {
     const { postAttrs } = this.state
     const { editSuccess } = this.state

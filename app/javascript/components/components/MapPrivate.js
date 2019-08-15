@@ -120,10 +120,19 @@ class MapPrivate extends React.Component {
                             <hr />
                             {post.address}
                               <div>
-                                <button onClick={() => deletePost(post.id)}>
-                                  Delete Post
-                                </button>
-                                <button href={`/edit/${post.id}`}>Edit</button>
+                              <button
+                                className="btn btn-primary btn-sm"
+                                onClick={() => deletePost(post.id)}
+                              >
+                                Delete Post
+                              </button>
+                                <Link
+                                  to={`/edit/${post.id}`}
+                                  className="btn btn-primary btn-sm"
+                                  id="editbtn"
+                                >
+                                  Edit Post
+                                </Link>
                               </div>
                           </div>
                         </div>
