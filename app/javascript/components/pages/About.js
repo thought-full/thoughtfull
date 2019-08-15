@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, Button, CardDeck } from "react-bootstrap"
+import { Card, CardDeck } from "react-bootstrap"
 import Chris from "../components/images/chris.jpeg";
 import Dylan from "../components/images/dylan.jpeg";
 import Jason from "../components/images/jason.jpeg";
