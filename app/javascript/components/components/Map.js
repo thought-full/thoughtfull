@@ -97,16 +97,12 @@ class Map extends React.Component {
                             {post.body}
                             <hr />
                             {post.address}
-                            {post.user_id === currentUserId && (
                               <div>
                                 <button onClick={() => deletePost(post.id)}>
                                   Delete Post
                                 </button>
-                                <Router>
-                                <Link to={`/edit/${post.id}`}>Edit</Link>
-                                </Router>
+                                <button href={`/edit/${post.id}`}>Edit</button>
                               </div>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -130,16 +126,6 @@ class Map extends React.Component {
                             {post.body}
                             <hr />
                             {post.address}
-                            {post.user_id === currentUserId && (
-                              <div>
-                                <button onClick={() => deletePost(post.id)}>
-                                  Delete Post
-                                </button>
-                                <Router>
-                                <Link to={`/edit/${post.id}`}>Edit</Link>
-                                </Router>
-                              </div>
-                            )}
                           </div>
                         </div>
                       </div>
