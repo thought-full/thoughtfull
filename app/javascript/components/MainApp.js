@@ -2,10 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
-//S3 bucket: thoughtfull -- US East Ohio
-//ID: AKIAVXIWOSMFCLJDY5MO
-//PW: FCb9Oue5D84DgHLeFaqES2PLydCq7XLrY+Hba0KR
-//Master: 36b5d0de6ba4753ae6dbdffb664a5957
 import Jumbotron from "./components/Jumbotron";
 import Navigation from "./components/Navigation";
 import Posts from "./pages/Posts";
@@ -70,12 +66,9 @@ class MainApp extends React.Component {
           this.getPosts();
           return response.json();
         } else {
-          return alert({error: payload.error})
+          return alert("Error: Did not update")
         }
       })
-      .then(payload => {
-        this.setState({ error: payload.error });
-      });
   };
 
   deletePost = id => {
