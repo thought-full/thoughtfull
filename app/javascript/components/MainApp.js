@@ -66,7 +66,7 @@ class MainApp extends React.Component {
           this.getPosts();
           return response.json();
         } else {
-          return alert({error: payload.error})
+          return alert({ error: payload.error });
         }
       })
       .then(payload => {
@@ -87,6 +87,55 @@ class MainApp extends React.Component {
       })
       .then(payload => {
         this.setState({ error: payload.error });
+      });
+  };
+
+  handleUpvote = id => {
+    console.log(id);
+    fetch(`/posts/${id}/upvote`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PUT"
+    })
+      .then(resp => {
+        let json = resp.json();
+        return json;
+      })
+      .then(() => {
+        const { posts } = this.state;
+        const index = posts.findIndex(post => post.id === id);
+        console.log(posts, index);
+        if (index >= 0) {
+          posts[index].votes++;
+          this.setState({
+            posts: posts
+          });
+        }
+      });
+  };
+
+  handleDownvote = id => {
+    fetch(`/posts/${id}/downvote`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PUT"
+    })
+      .then(resp => {
+        let json = resp.json();
+        return json;
+      })
+      .then(() => {
+        const { posts } = this.state;
+        const index = posts.findIndex(post => post.id === id);
+        console.log(posts, index);
+        if (index >= 0) {
+          posts[index].votes--;
+          this.setState({
+            posts: posts
+          });
+        }
       });
   };
 
@@ -120,10 +169,12 @@ class MainApp extends React.Component {
                 <div>
                   <Jumbotron />
                   <Posts
-                  {...props}
-                  currentUserId={current_user_id}
-                  posts={posts}
-                  deletePost={this.deletePost}
+                    {...props}
+                    currentUserId={current_user_id}
+                    posts={posts}
+                    deletePost={this.deletePost}
+                    handleUpvote={this.handleUpvote}
+                    handleDownvote={this.handleDownvote}
                   />
                 </div>
               );
