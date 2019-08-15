@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Map from "./../components/Map";
+import Votes from "./../components/Votes";
 
 class Posts extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class Posts extends React.Component {
           {this.state.showMap && (
             <div>
               <h1>Posts</h1>
-              <div className="card-flex">
+              <div className="card-grid">
                 {posts.reduce((filtered, post) => {
                   if (post.public_view === true) {
                     filtered.push(
@@ -54,15 +55,25 @@ class Posts extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">
+                        <div className="card-header card-header-grid">
                           {post.date}
+                          <div className="vote-container">
+                            <Votes
+                              {...this.props}
+                              votes={post.votes}
+                              handleUpvote={() =>
+                                this.props.handleUpvote(post.id)
+                              }
+                              handleDownvote={() =>
+                                this.props.handleDownvote(post.id)
+                              }
+                            />
+                          </div>
                         </div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
-                            <hr />
-                            {post.address}
-                            <hr />
+                            <div className="vote-container"></div>
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button

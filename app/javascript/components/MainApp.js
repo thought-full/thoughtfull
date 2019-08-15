@@ -32,7 +32,6 @@ class MainApp extends React.Component {
   };
 
   createPost = attrs => {
-    console.log("Working. These are the attrs", attrs);
     return fetch("/posts", {
       method: "POST",
       headers: {
@@ -60,18 +59,14 @@ class MainApp extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ post: attrs })
-    })
-      .then(response => {
-        if (response.status === 200) {
-          this.getPosts();
-          return response.json();
-        } else {
-          return alert({error: payload.error})
-        }
-      })
-      .then(payload => {
-        this.setState({ error: payload.error });
-      });
+    }).then(response => {
+      if (response.status === 200) {
+        this.getPosts();
+        return response.json();
+      } else {
+        return alert("Error: Did not update");
+      }
+    });
   };
 
   deletePost = id => {
@@ -87,6 +82,53 @@ class MainApp extends React.Component {
       })
       .then(payload => {
         this.setState({ error: payload.error });
+      });
+  };
+
+  handleUpvote = id => {
+    console.log(id);
+    fetch(`/posts/${id}/upvote`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PUT"
+    })
+      .then(resp => {
+        let json = resp.json();
+        return json;
+      })
+      .then(() => {
+        const { posts } = this.state;
+        const index = posts.findIndex(post => post.id === id);
+        if (index >= 0) {
+          posts[index].votes++;
+          this.setState({
+            posts: posts
+          });
+        }
+      });
+  };
+
+  handleDownvote = id => {
+    fetch(`/posts/${id}/downvote`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PUT"
+    })
+      .then(resp => {
+        let json = resp.json();
+        return json;
+      })
+      .then(() => {
+        const { posts } = this.state;
+        const index = posts.findIndex(post => post.id === id);
+        if (index >= 0) {
+          posts[index].votes--;
+          this.setState({
+            posts: posts
+          });
+        }
       });
   };
 
@@ -120,10 +162,12 @@ class MainApp extends React.Component {
                 <div>
                   <Jumbotron />
                   <Posts
-                  {...props}
-                  currentUserId={current_user_id}
-                  posts={posts}
-                  deletePost={this.deletePost}
+                    {...props}
+                    currentUserId={current_user_id}
+                    posts={posts}
+                    deletePost={this.deletePost}
+                    handleUpvote={this.handleUpvote}
+                    handleDownvote={this.handleDownvote}
                   />
                 </div>
               );
