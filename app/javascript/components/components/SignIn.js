@@ -46,9 +46,9 @@ class SignIn extends React.Component {
     return (
       <React.Fragment>
         <ButtonToolbar>
-          <Button variant="primary" onClick={this.toggleModalShow}>
+          <a id="sign-in-link" variant="primary" onClick={this.toggleModalShow}>
             Sign In
-          </Button>
+          </a>
 
           <Modal
             show={this.state.modalShow}

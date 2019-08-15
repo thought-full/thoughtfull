@@ -73,6 +73,16 @@ class Posts extends React.Component {
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
+<<<<<<< HEAD
+=======
+                            <hr />
+                            { post && post.image_url &&
+                                <img src={post.image_url } width="200" height="200" />
+                            }
+                            <hr />
+                            {post.address}
+                            <div className="vote-container"></div>
+>>>>>>> master
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button
