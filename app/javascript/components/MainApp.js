@@ -32,7 +32,6 @@ class MainApp extends React.Component {
   };
 
   createPost = attrs => {
-    console.log("Working. These are the attrs", attrs);
     return fetch("/posts", {
       method: "POST",
       headers: {
@@ -60,19 +59,14 @@ class MainApp extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ post: attrs })
-    })
-      .then(response => {
-        if (response.status === 200) {
-          this.getPosts();
-          return response.json();
-        } else {
-<<<<<<< HEAD
-          return alert({ error: payload.error });
-=======
-          return alert("Error: Did not update")
->>>>>>> master
-        }
-      })
+    }).then(response => {
+      if (response.status === 200) {
+        this.getPosts();
+        return response.json();
+      } else {
+        return alert("Error: Did not update");
+      }
+    });
   };
 
   deletePost = id => {
@@ -106,7 +100,6 @@ class MainApp extends React.Component {
       .then(() => {
         const { posts } = this.state;
         const index = posts.findIndex(post => post.id === id);
-        console.log(posts, index);
         if (index >= 0) {
           posts[index].votes++;
           this.setState({
@@ -130,7 +123,6 @@ class MainApp extends React.Component {
       .then(() => {
         const { posts } = this.state;
         const index = posts.findIndex(post => post.id === id);
-        console.log(posts, index);
         if (index >= 0) {
           posts[index].votes--;
           this.setState({

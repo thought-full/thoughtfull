@@ -47,7 +47,7 @@ class Posts extends React.Component {
           {this.state.showMap && (
             <div>
               <h1>Posts</h1>
-              <div className="card-flex">
+              <div className="card-grid">
                 {posts.reduce((filtered, post) => {
                   if (post.public_view === true) {
                     filtered.push(
@@ -73,8 +73,6 @@ class Posts extends React.Component {
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
-                            <hr />
-                            {post.address}
                             <div className="vote-container"></div>
                             {post.user_id === currentUserId && (
                               <div>
