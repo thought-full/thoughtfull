@@ -79,7 +79,6 @@ class Posts extends React.Component {
                             }
                             <hr />
                             {post.address}
-                            <div className="vote-container"></div>
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button
