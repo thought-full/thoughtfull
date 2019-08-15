@@ -60,7 +60,7 @@ class EditPost extends React.Component {
       this.setState({postAttrs: response})
     })
   }
-  
+
   render () {
     const { postAttrs, editSuccess, post } = this.state
     return (

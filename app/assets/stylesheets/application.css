@@ -41,9 +41,17 @@ div.card-header.card-header-grid {
 }
 
 .divider {
-  width: 5px;
-  height: auto;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+#editbtn {
+  color: white;
+  text-decoration: none;
+  font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin-left: 10px;
 }
 
 #downButton :hover {
