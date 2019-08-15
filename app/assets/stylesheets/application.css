@@ -36,14 +36,23 @@ body {
   justify-content: center;
 }
 
+.card-image {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 div.card-header.card-header-grid {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 20px 5px 20px;
 }
 
 .divider {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
+}
+
+#downButton :hover {
+  fill: #ff586c;
+  cursor: pointer;
 }
 
 #editbtn {
@@ -54,11 +63,12 @@ div.card-header.card-header-grid {
   margin-left: 10px;
 }
 
-#downButton :hover {
-  fill: #ff586c;
-  cursor: pointer;
+#imgupload {
+  margin-left: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 0;
 }
-
 .leaflet-container {
   height: 80vh;
   width: 100%;

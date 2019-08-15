@@ -132,6 +132,12 @@ class MapPrivate extends React.Component {
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
+                            <div className="card-image">
+                            { post && post.image_url &&
+                                <img src={post.image_url } width="100%" height="100%" />
+                            }
+                            </div>
+                            {post.address}
                             <div className="divider">
                               <button
                                 className="btn btn-primary btn-sm"
