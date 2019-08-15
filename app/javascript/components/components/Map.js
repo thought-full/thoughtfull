@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 // Import Leaflet
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet'
+import Votes from "./Votes"
 
 // Map TileLayer variables
 const stamenTonerTiles =
@@ -91,13 +92,25 @@ class Map extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                        <div className="card-header">{post.date}</div>
+                      <div className="card-header card-header-grid">
+                        {post.date}
+                        <div className="vote-container">
+                          <Votes
+                            {...this.props}
+                            votes={post.votes}
+                            handleUpvote={() =>
+                              this.props.handleUpvote(post.id)
+                            }
+                            handleDownvote={() =>
+                              this.props.handleDownvote(post.id)
+                            }
+                          />
+                        </div>
+                      </div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
-                            <hr />
-                            {post.address}
-                              <div>
+                              <div className="divider">
                                 <button
                                   className="btn btn-primary btn-sm"
                                   onClick={() => deletePost(post.id)}
