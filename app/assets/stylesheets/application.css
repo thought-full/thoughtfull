@@ -46,11 +46,11 @@ div.card-header.card-header-grid {
   justify-content: space-between;
 }
 
-
 #editbtn {
   color: white;
   text-decoration: none;
-  font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin-left: 10px;
 }
 
@@ -62,6 +62,13 @@ div.card-header.card-header-grid {
 .leaflet-container {
   height: 80vh;
   width: 100%;
+}
+
+#sign-in-link {
+  color: #ffffff;
+  display: block;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 #upButton :hover {
