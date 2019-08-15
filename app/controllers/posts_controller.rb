@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     def update
         @post = current_user.posts.find(params[:id])
         if @post.update(post_params)
-            render json: @post
+            render :show
         else
             render json: {error: 'could not update'}, status: 401
         end
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:date, :body, :public_view, :address, :latitude, :longitude, :votes)
+        params.require(:post).permit(:date, :body, :public_view, :address, :latitude, :longitude, :votes, :image)
     end
 end

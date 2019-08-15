@@ -66,12 +66,13 @@ class MainApp extends React.Component {
           this.getPosts();
           return response.json();
         } else {
+<<<<<<< HEAD
           return alert({ error: payload.error });
+=======
+          return alert("Error: Did not update")
+>>>>>>> master
         }
       })
-      .then(payload => {
-        this.setState({ error: payload.error });
-      });
   };
 
   deletePost = id => {
