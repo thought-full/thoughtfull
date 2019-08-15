@@ -14,8 +14,49 @@
  *= require_self
  */
 
+/* Universal styles */
+
 * {
   box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Module styles */
+.card-header-grid {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+div.card-header.card-header-grid {
+  padding: 5px 10px 5px 10px;
+}
+
+.divider {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+#editbtn {
+  color: white;
+  text-decoration: none;
+  font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin-left: 10px;
+}
+
+#downButton :hover {
+  fill: #ff586c;
+  cursor: pointer;
 }
 
 .leaflet-container {
@@ -23,14 +64,47 @@
   width: 100%;
 }
 
-body {
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+#upButton :hover {
+  fill: #6cc576;
+  cursor: pointer;
 }
 
-.divider {
-  width: 5px;
-  height: auto;
-  display: inline-block;
+.vote {
+  border: none;
+  height: 16px;
+  width: 20px;
+  margin: 0;
+  padding: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  background-color: transparent;
+}
+
+.vote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#vote-count {
+  margin: 4px 0 -2px 0;
+}
+
+.vount-count {
+  margin-top: 0;
+  padding: 0;
+}
+
+.vote-count > h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.vote:active {
+  outline: none;
+  border: none;
+}
+.vote:focus {
+  outline: 0;
 }
