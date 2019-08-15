@@ -87,12 +87,13 @@ class Posts extends React.Component {
                                 >
                                   Delete Post
                                 </button>
-                                  <Link
-                                    to={`/edit/${post.id}`}
-                                    className="btn btn-primary btn-sm"
-                                  >
-                                    Edit Post
-                                  </Link>
+                                <Link
+                                  to={`/edit/${post.id}`}
+                                  className="btn btn-primary btn-sm"
+                                  id="editbtn"
+                                >
+                                  Edit Post
+                                </Link>
                               </div>
                             )}
                           </div>
