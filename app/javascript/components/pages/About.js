@@ -65,7 +65,7 @@ class About extends React.Component {
             <Card.Body>
               <Card.Title>Jason Cheng</Card.Title>
               <Card.Text>
-              Innovative and analytical full-stack web developer. Excels in careful, deliberate decision-making and clear communication and collaboration. Passionate about searching for creative ideas to solve problems and performing high-level analysis to grow in understanding.
+              Innovative and analytical full-stack web developer. Excels in careful, deliberate decision-making and clear communication. Loves learning about people, hearing their stories, and trying to understand others.
             </Card.Text>
               <Card.Link href="https://github.com/jasoncheng20"><img src={Github} style={ icon }></img></Card.Link>
               <Card.Link href="https://www.linkedin.com/in/jasoncheng20/"><img src={LinkedIn} style={ icon }></img>
