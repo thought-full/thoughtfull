@@ -16,12 +16,12 @@ class About extends React.Component {
         <hr style={{ margin: "0 15%" }}/>
         <br />
         <h2 style={{ textAlign: "center" }}>Our Vision</h2>
-        <p style={{ textAlign: "justified", margin: "0 15%" }}>  Each one of our lives is filled of small moments of significance: of transformation and realization. However, our minds are crowded with the endless distractions of today's world, and we neglect to capture these meaningful stories. Here at ThoughtFull, our goal is to provide a platform for users to take some time each day to ask, "What made today different than any other?", to recollect the little moments, and to discover what is truly significant. </p>
+        <p style={{ textAlign: "justified", margin: "0 15%" }}>  Each of our lives are filled with small moments of significance: of transformation and realization. However, our minds are too crowded with the endless distractions of today's world, and we neglect to capture these meaningful stories. Here at ThoughtFull, our goal is to provide a platform for users to take some time each day to ask, "What made today different than any other?", to recollect the little moments, and to discover what is truly significant. </p>
         <br />
         <hr style={{ margin: "0 15%" }}/>
         <br />
         <h2 style={{ textAlign: "center" }}>Our Story</h2>
-        <p style={{ textAlign: "justified", margin: "0 15%" }}> ThoughtFull began in August of 2019 as a capstone project for a three-month long Web Developer bootcamp in downtown San Diego. It has since grown from a idea formed during a brainstorm into a complete project, and we look forward to how ThoughtFull will continue to grow in the future.</p>
+        <p style={{ textAlign: "justified", margin: "0 15%" }}> ThoughtFull began in August of 2019 as a capstone project for a three-month long Web Developer bootcamp in downtown San Diego. It has since grown from an idea formed during a brainstorming session into a complete project, and we look forward to how ThoughtFull will continue to grow in the future.</p>
         <p style={{ textAlign: "justified", margin: "0 15%" }}>Today, ThoughtFull has been deployed, and the team is continuing to add features that will improve the channels with which our users interact with one another and with their own stories in meaningful ways.</p>
         <br />
         <hr style={{ margin: "0 15%" }}/>
@@ -75,9 +75,8 @@ class About extends React.Component {
             <Card.Body>
               <Card.Title>Randy Tseng</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-            </Card.Text>
+                First took a Java class his last quarter at UCSD while finishing up a chemical engineering degree, and couldn't stop coding. If he's not coding, you can find him hanging out with church friends, playing board games, or drinking boba. 
+              </Card.Text>
               <Card.Link href="https://github.com/tsengrandy"><img src={Github}></img></Card.Link>
               <Card.Link href="https://www.linkedin.com/in/randytseng/"><img src={LinkedIn} style={{ width: '3.4rem' }}></img></Card.Link>
             </Card.Body>
