@@ -30,7 +30,8 @@ class Private extends React.Component {
     return (
       <React.Fragment>
         <Container>
-          <div className="custom-control custom-switch">
+          {(posts.length > 0) && (
+            <div className="custom-control custom-switch">
             <input
               onChange={this.togglesMap}
               name="mapView"
@@ -38,11 +39,12 @@ class Private extends React.Component {
               className="custom-control-input"
               id="mapView"
               checked={this.showMap}
-            />
+              ></input>
             <label className="custom-control-label" htmlFor="mapView">
-              {this.state.toggleLabel}
+              Map View
             </label>
-          </div>
+            </div>
+          )}
 
           {this.state.showMap && (
             <div>

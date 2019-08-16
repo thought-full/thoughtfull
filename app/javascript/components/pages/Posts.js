@@ -13,7 +13,7 @@ class Posts extends React.Component {
       toggleLabel: "Posts"
     };
   }
-
+  
   togglesMap = () => {
     this.togglesLabel();
     this.setState({ showMap: !this.state.showMap });
@@ -27,9 +27,21 @@ class Posts extends React.Component {
 
   render() {
     const { posts, currentUserId, deletePost } = this.props;
+
+    let addressExistsInPosts = 
+      posts.map(post => {
+        return Object.values(post)[5];
+      })
+      .filter(value => {
+        return value != "";
+      }).length > 0
+      ? true
+      : false;
+
     return (
       <React.Fragment>
         <Container>
+        {(posts.length > 0 && addressExistsInPosts) && (
           <div className="custom-control custom-switch">
             <input
               onChange={this.togglesMap}
@@ -40,16 +52,18 @@ class Posts extends React.Component {
               checked={this.showMap}
             />
             <label className="custom-control-label" htmlFor="mapView">
-              {this.state.toggleLabel}
+              Map View
             </label>
           </div>
-
+        )}
           {this.state.showMap && (
             <div>
               <h1>Posts</h1>
               <div className="card-grid">
                 {posts.reduce((filtered, post) => {
-                  if (post.public_view === true) {
+                  if (
+                    post.public_view === true
+                    ) {
                     filtered.push(
                       <div
                         className="card border-primary mb-3 card-width"
