@@ -7,6 +7,7 @@ json.array! @posts do |post|
     json.address post.address
     json.latitude post.latitude
     json.longitude post.longitude
+    json.votes post.votes
     if post.image.attachment
         json.image_url url_for(post.image)
     end
