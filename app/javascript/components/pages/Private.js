@@ -38,7 +38,7 @@ class Private extends React.Component {
               className="custom-control-input"
               id="mapView"
               checked={this.showMap}
-            ></input>
+            />
             <label className="custom-control-label" htmlFor="mapView">
               {this.state.toggleLabel}
             </label>
@@ -58,42 +58,46 @@ class Private extends React.Component {
                         className="card border-primary mb-3 card-width"
                         key={post.id}
                       >
-                      <div className="card-header card-header-grid">
-                        {post.date}
-                        <div className="vote-container">
-                          <Votes
-                            {...this.props}
-                            votes={post.votes}
-                            handleUpvote={() =>
-                              this.props.handleUpvote(post.id)
-                            }
-                            handleDownvote={() =>
-                              this.props.handleDownvote(post.id)
-                            }
-                          />
+                        <div className="card-header card-header-grid">
+                          {post.date}
+                          <div className="vote-container">
+                            <Votes
+                              {...this.props}
+                              votes={post.votes}
+                              handleUpvote={() =>
+                                this.props.handleUpvote(post.id)
+                              }
+                              handleDownvote={() =>
+                                this.props.handleDownvote(post.id)
+                              }
+                            />
+                          </div>
                         </div>
-                      </div>
                         <div className="card-body">
                           <div className="card-text">
                             {post.body}
                             <hr />
-                            { post && post.image_url &&
-                                <img src={post.image_url } width="100%" height="100%" />
-                            }
+                            {post && post.image_url && (
+                              <img
+                                src={post.image_url}
+                                width="100%"
+                                height="100%"
+                              />
+                            )}
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button
-                                  className="btn btn-primary btn-sm"
+                                  className="btn btn-outline-danger btn-sm"
                                   onClick={() => deletePost(post.id)}
                                 >
-                                  Delete Post
+                                  🗑️ Delete Post
                                 </button>
                                 <Link
                                   to={`/edit/${post.id}`}
-                                  className="btn btn-primary btn-sm"
-                                  id="editbtn"
+                                  className="btn btn-outline-primary btn-sm"
+                                  style={{ margin: "0 5%" }}
                                 >
-                                  Edit Post
+                                  ✏️ Edit Post
                                 </Link>
                               </div>
                             )}

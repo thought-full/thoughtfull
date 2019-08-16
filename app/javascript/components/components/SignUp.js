@@ -47,7 +47,7 @@ class SignUp extends React.Component {
     return (
       <React.Fragment>
         <ButtonToolbar>
-          <Button variant="primary" onClick={this.toggleModalShow}>
+          <Button variant="outline-info" onClick={this.toggleModalShow}>
             Sign Up
           </Button>
 
@@ -113,7 +113,7 @@ class SignUp extends React.Component {
                   />
                 </Form.Group>
 
-                <Button onClick={this.handleUserSignUp} variant="primary">
+                <Button onClick={this.handleUserSignUp} variant="outline-info">
                   Sign Up
                 </Button>
               </Form>
