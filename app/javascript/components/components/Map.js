@@ -129,17 +129,17 @@ class Map extends React.Component {
                             {post.address}
                             <div className="divider">
                               <button
-                                className="btn btn-primary btn-sm"
+                                className="btn btn-outline-danger btn-sm"
                                 onClick={() => deletePost(post.id)}
                               >
-                                Delete Post
+                                🗑️ Delete
                               </button>
                               <Link
                                 to={`/edit/${post.id}`}
-                                className="btn btn-primary btn-sm"
-                                id="editbtn"
+                                className="btn btn-outline-primary btn-sm"
+                                style={{margin: "0 5%"}}
                               >
-                                Edit Post
+                                ✏️ Edit
                               </Link>
                             </div>
                           </div>
@@ -190,6 +190,7 @@ class Map extends React.Component {
             }, [])}
           </LeafletMap>
         </Container>
+        <br/>
       </React.Fragment>
     );
   }

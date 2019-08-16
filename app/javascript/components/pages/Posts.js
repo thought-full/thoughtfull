@@ -50,7 +50,7 @@ class Posts extends React.Component {
               className="custom-control-input"
               id="mapView"
               checked={this.showMap}
-            ></input>
+            />
             <label className="custom-control-label" htmlFor="mapView">
               Map View
             </label>
@@ -88,23 +88,27 @@ class Posts extends React.Component {
                           <div className="card-text">
                             {post.body}
                             <hr />
-                            { post && post.image_url &&
-                                <img src={post.image_url } width="100%" height="100%" />
-                            }
+                            {post && post.image_url && (
+                              <img
+                                src={post.image_url}
+                                width="100%"
+                                height="100%"
+                              />
+                            )}
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button
-                                  className="btn btn-primary btn-sm"
+                                  className="btn btn-outline-danger btn-sm"
                                   onClick={() => deletePost(post.id)}
                                 >
-                                  Delete Post
+                                  🗑️ Delete Post
                                 </button>
                                 <Link
                                   to={`/edit/${post.id}`}
-                                  className="btn btn-primary btn-sm"
-                                  id="editbtn"
+                                  className="btn btn-outline-primary btn-sm"
+                                  style={{margin: "0 5%"}}
                                 >
-                                  Edit Post
+                                  ✏️ Edit Post
                                 </Link>
                               </div>
                             )}

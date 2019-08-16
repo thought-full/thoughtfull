@@ -87,11 +87,12 @@ class SignIn extends React.Component {
                     placeholder="Enter password"
                   />
                 </Form.Group>
-
-                <Button onClick={this.handleUserLogin} variant="primary">
-                  Sign In
-                </Button>
-                <SignUp />
+                <div style={{ display: "flex", flexDirection: "row", alignItems: "right", justifyContent: "flex-end" }}>
+                  <Button onClick={this.handleUserLogin} variant="outline-success" style={{ margin: "0 2.5%"}}>
+                    Sign In
+                  </Button>
+                  <SignUp />
+                </div>
               </Form>
             </Modal.Body>
             <Modal.Footer>
