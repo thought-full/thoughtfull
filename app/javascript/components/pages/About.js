@@ -65,7 +65,7 @@ class About extends React.Component {
             <Card.Body>
               <Card.Title>Jason Cheng</Card.Title>
               <Card.Text>
-              Innovative and analytical full-stack web developer. Excels in careful, deliberate decision-making and clear communication. Loves learning about people, hearing their stories, and trying to understand others.
+              Innovative and analytical full-stack web developer. Excels in careful, deliberate decision-making and clear communication. Loves learning about people and hearing their stories, reading, and singing worship songs.
             </Card.Text>
               <Card.Link href="https://github.com/jasoncheng20"><img src={Github} style={ icon }></img></Card.Link>
               <Card.Link href="https://www.linkedin.com/in/jasoncheng20/"><img src={LinkedIn} style={ icon }></img>
@@ -79,8 +79,8 @@ class About extends React.Component {
               <Card.Text>
                 First took a Java class his last quarter at UCSD while finishing up a chemical engineering degree, and couldn't stop coding. If he's not coding, you can find him hanging out with church friends, playing board games, or drinking boba. 
               </Card.Text>
-              <Card.Link href="https://github.com/tsengrandy"><img src={Github}></img></Card.Link>
-              <Card.Link href="https://www.linkedin.com/in/randytseng/"><img src={LinkedIn} style={{ width: '3.4rem' }}></img></Card.Link>
+              <Card.Link href="https://github.com/tsengrandy"><img src={Github} style= { icon }></img></Card.Link>
+              <Card.Link href="https://www.linkedin.com/in/randytseng/"><img src={LinkedIn} style={ icon }></img></Card.Link>
             </Card.Body>
           </Card>
         </CardDeck>
