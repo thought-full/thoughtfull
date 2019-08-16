@@ -3,8 +3,8 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // Import Leaflet
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
-import L from 'leaflet'
-import Votes from "./Votes"
+import L from "leaflet";
+import Votes from "./Votes";
 
 // Map TileLayer variables
 const stamenTonerTiles =
@@ -13,14 +13,14 @@ const stamenTonerAttr =
   'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
 export const redIcon = new L.Icon({
-  iconUrl: require('./images/leaflet_pin_red.png'),
-  iconRetinaUrl: require('./images/leaflet_pin_red.png'),
+  iconUrl: require("./images/leaflet_pin_red.png"),
+  iconRetinaUrl: require("./images/leaflet_pin_red.png"),
   popupAnchor: [0, -13.5],
   iconSize: [25, 41],
-  shadowUrl: require('./images/shadow.png'),
+  shadowUrl: require("./images/shadow.png"),
   shadowSize: [41, 41],
   shadowAnchor: [12, 20]
-})
+});
 
 class MapPrivate extends React.Component {
   render() {
@@ -133,9 +133,13 @@ class MapPrivate extends React.Component {
                           <div className="card-text">
                             {post.body}
                             <div className="card-image">
-                            { post && post.image_url &&
-                                <img src={post.image_url } width="100%" height="100%" />
-                            }
+                              {post && post.image_url && (
+                                <img
+                                  src={post.image_url}
+                                  width="100%"
+                                  height="100%"
+                                />
+                              )}
                             </div>
                             {post.address}
                             <div className="divider">
@@ -152,7 +156,7 @@ class MapPrivate extends React.Component {
                               >
                                 Edit Post
                               </Link>
-                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
