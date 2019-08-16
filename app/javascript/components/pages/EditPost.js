@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { Form, Button, Container } from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
 import ActiveStorageProvider from 'react-activestorage-provider'
+import { OpenStreetMapProvider } from "leaflet-geosearch";
+
 
 class EditPost extends React.Component {
   constructor(props){
@@ -11,7 +13,6 @@ class EditPost extends React.Component {
     this.state = {
       postAttrs: {},
       editSuccess: false,
-      post
     }
   }
 
@@ -43,6 +44,14 @@ class EditPost extends React.Component {
     const { postAttrs } = this.state
     const { name, value } = e.target
     postAttrs[name] = value
+    const provider = new OpenStreetMapProvider();
+    // Leaflet geosearch API call, takes address as string
+    if (postAttrs.address) {
+      provider.search({ query: postAttrs.address }).then(result => {
+        postAttrs.latitude = result[0].y;
+        postAttrs.longitude = result[0].x;
+      });
+    }
     this.setState({ postAttrs })
   }
 
@@ -89,7 +98,7 @@ class EditPost extends React.Component {
             <label className="custom-control-label" htmlFor="customSwitch1">Make thought public?</label>
           </div>
 
-          <Container>
+          <Container id="imgupload">
             { post && post.image_url &&
               <div>
                 <h2>Your Image is: </h2>
@@ -111,6 +120,7 @@ class EditPost extends React.Component {
                     accept="image/*"
                     disabled={!ready}
                     onChange={e => handleUpload(e.currentTarget.files)}
+                    className="btn btn-primary btn-sm"
                   />
 
                   {uploads.map(upload => {

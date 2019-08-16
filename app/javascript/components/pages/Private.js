@@ -78,10 +78,8 @@ class Private extends React.Component {
                             {post.body}
                             <hr />
                             { post && post.image_url &&
-                                <img src={post.image_url } width="200" height="200" />
+                                <img src={post.image_url } width="100%" height="100%" />
                             }
-                            <hr />
-                            {post.address}
                             {post.user_id === currentUserId && (
                               <div className="divider">
                                 <button

@@ -77,11 +77,10 @@ class About extends React.Component {
             <Card.Body>
               <Card.Title>Randy Tseng</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-            </Card.Text>
-              <Card.Link href="https://github.com/tsengrandy"><img src={Github} style={ icon }></img></Card.Link>
-              <Card.Link href="https://www.linkedin.com/in/randytseng/"><img src={LinkedIn} style={ icon }></img></Card.Link>
+                First took a Java class his last quarter at UCSD while finishing up a chemical engineering degree, and couldn't stop coding. If he's not coding, you can find him hanging out with church friends, playing board games, or drinking boba. 
+              </Card.Text>
+              <Card.Link href="https://github.com/tsengrandy"><img src={Github}></img></Card.Link>
+              <Card.Link href="https://www.linkedin.com/in/randytseng/"><img src={LinkedIn} style={{ width: '3.4rem' }}></img></Card.Link>
             </Card.Body>
           </Card>
         </CardDeck>
