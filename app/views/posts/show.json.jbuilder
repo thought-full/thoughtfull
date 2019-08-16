@@ -6,4 +6,5 @@ json.user_id @post.user_id
 json.address @post.address
 json.latitude @post.latitude
 json.longitude @post.longitude
+json.votes @post.votes
 json.image_url url_for(@post.image)
