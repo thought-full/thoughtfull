@@ -12,12 +12,15 @@ import Map from "components/Map";
 import MapPrivate from "components/MapPrivate";
 import Navigation from "components/Navigation";
 import SignIn from "components/SignIn";
+import SignUp from "components/SignUp";
+import Votes from "components/Votes";
 import About from "pages/About";
 import EditPost from "pages/EditPost";
-import Location from "pages/Location";
 import NewPost from "pages/NewPost";
 import Posts from "pages/Posts";
 import Private from "pages/Private";
+import Logo from "./images/tf_icon_transparent.png";
+
 
 test("MainApp renders without crashing", () => {
   const div = document.createElement("div");
@@ -93,19 +96,26 @@ test("Navigation renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<Navigation />, div);
 });
+
+// test('Navigation renders an image of the logo', () => {
+//   const app = shallow(<Navigation />);
+//   const logo = shallow(<Logo />)
+//   expect(app.find("img").text()).toEqual("Sign In");
+// });
+
 test("About renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<About />, div);
 });
 
-test('About contains an h1 "About ThoughtFull"', () => {
+test('About contains three h2 Headers', () => {
   const app = shallow(<About />);
   expect(app.find("h2").at(0).text()).toEqual("Our Vision");
   expect(app.find("h2").at(1).text()).toEqual("Our Story");
+  expect(app.find("h2").at(2).text()).toEqual("We Are ThoughtFull:");
 });
 
 // test('EditPost renders without crashing', () => {
-//   const showPost = mock.fn();
 //   const props = {
 //     params: { id: 1},
 //   }
@@ -186,9 +196,29 @@ test('renders a Home Page that says "Posts"', () => {
   expect(app.find("div.card-text").exists()).toEqual(true);
 });
 
-test("Posts renders without crashing", () => {
+test("Sign In renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<SignIn />, div);
+});
+
+test('Sign In contains an achor labeled "Sign In"', () => {
+  const app = shallow(<SignIn />);
+  expect(app.find("a").text()).toEqual("Sign In");
+});
+
+test("Sign Up renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<SignUp />, div);
+});
+
+test("Votes renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<Votes />, div);
+});
+
+test("Votes contains an h6 Header", () => {
+  const app = shallow(<Votes />);
+  expect(app.find("h6").exists()).toBe(true);
 });
 
 // test('Each Post has a delete button that can be clicked', () => {
