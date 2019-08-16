@@ -62,7 +62,7 @@ class NewPost extends React.Component {
         <h1>Create a New Post</h1>
 
         <Form onSubmit={this.localSubmit}>
-          <Form.Group as={Col} md="3">
+          <Form.Group>
             <Form.Label>Date</Form.Label>
             <Form.Control
               required
@@ -75,7 +75,7 @@ class NewPost extends React.Component {
             />
           </Form.Group>
 
-          <Form.Group as={Col}>
+          <Form.Group>
             <Form.Label>Body</Form.Label>
             <Form.Control
               required
@@ -88,7 +88,7 @@ class NewPost extends React.Component {
             />
           </Form.Group>
 
-          <Form.Group as={Col} md="4">
+          <Form.Group>
             <Form.Label>Address</Form.Label>
             <Form.Control
               onChange={this.onChange}
