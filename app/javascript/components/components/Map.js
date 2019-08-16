@@ -26,7 +26,10 @@ class Map extends React.Component {
   render() {
     const { posts, currentUserId, deletePost } = this.props;
     let publicPosts = posts.reduce((filtered, post) => {
-      if (post.public_view === true && post.latitude !== null) {
+      if (
+        post.public_view === true && 
+        post.latitude !== null
+        ) {
         filtered.push(post);
       }
       return filtered;
