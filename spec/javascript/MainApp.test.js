@@ -40,20 +40,21 @@ test("The Jumbotron contains an introduction to ThoughtFull", () => {
   expect(app.find("p.lead").exists()).toBe(true);
 });
 
-test("Map renders without crashing", () => {
-  const posts = [
-    {
-      id: 1,
-      body: "test post",
-      address: "122 W Florentia St, Seattle, WA 92101",
-      latitude: "47.64707915",
-      longitude: "-122.3592212",
-      public_view: true
-    }
-  ];
-  const div = document.createElement("div");
-  ReactDOM.render(<Map posts={posts} />, div);
-});
+// test("Map renders without crashing", () => {
+//   const posts = [
+//     {
+//       id: 1,
+//       body: "test post",
+//       address: "122 W Florentia St, Seattle, WA 92101",
+//       latitude: "47.64707915",
+//       longitude: "-122.3592212",
+//       public_view: true
+//     }
+//   ];
+//   const div = document.createElement("div");
+//   ReactDOM.render(<Map posts={posts} />, div);
+// });
+
 
 test('Map contains an h1 "Map"', () => {
   const app = shallow(<Map posts={[]} />);
@@ -99,7 +100,8 @@ test("About renders without crashing", () => {
 
 test('About contains an h1 "About ThoughtFull"', () => {
   const app = shallow(<About />);
-  expect(app.find("h1").text()).toEqual("About ThoughtFull");
+  expect(app.find("h2").at(0).text()).toEqual("Our Vision");
+  expect(app.find("h2").at(1).text()).toEqual("Our Story");
 });
 
 // test('EditPost renders without crashing', () => {
@@ -153,7 +155,7 @@ test("NewPost renders a submit button with custom text", () => {
   const wrapper = shallow(<NewPost />);
   const button = wrapper.find("Button");
   expect(button).toHaveLength(1);
-  expect(button.prop("type")).toEqual("button");
+  expect(button.prop("type")).toEqual("submit");
   expect(button.text()).toEqual("Submit");
 });
 
